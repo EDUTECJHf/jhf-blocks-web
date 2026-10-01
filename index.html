@@ -502,20 +502,30 @@
     .btn-download-cp {
       background-color: var(--cp-neon);
       color: #000;
-      padding: 16px 28px;
+      padding: 14px 24px;
       border-radius: 10px;
       font-weight: 900;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
       transition: all 0.2s;
     }
 
     .btn-download-cp:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.45);
+    }
+
+    .btn-download-cp.blue {
+      background-color: var(--cp-blue);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(30, 136, 229, 0.25);
+    }
+
+    .btn-download-cp.blue:hover {
+      box-shadow: 0 0 25px rgba(30, 136, 229, 0.45);
     }
 
     /* SECCION DESAFIOS ONLINE */
@@ -917,20 +927,34 @@
 
       <!-- FUNCIONES PARA EL AULA & DESCARGA -->
       <div style="text-align: center; margin-top: 40px;">
-        <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Descargar Cuidado Pequeñuelos</h3>
-        <p style="font-size: 0.95rem; opacity: 0.85; margin-bottom: 25px;">Requisitos: Windows 10 u 11 (64-bits) | Funcionamiento 100% Offline</p>
+        <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Descargar Cuidado Pequeñuelos v0.4.0</h3>
+        <p style="font-size: 0.95rem; opacity: 0.85; margin-bottom: 25px;">Seleccioná la versión adecuada para las computadoras de tu escuela | Funcionamiento 100% Offline</p>
 
-        <!-- BOTÓN DE DESCARGA PEQUEÑUELOS -->
-        <a href="AcaVaElLinkDeDescarga" class="btn-download-cp" download>
-          <i class="fas fa-download" style="font-size: 1.4rem;"></i>
-          <span style="text-align: left;">
-            <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Cuidado Pequeñuelos v0.4.0</span>
-            <span style="display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Instalador Windows (.exe) ~ 114 MB</span>
-          </span>
-        </a>
+        <!-- BOTONES DE DESCARGA PEQUEÑUELOS -->
+        <div class="downloads-container">
+          <!-- Versión 64-bits -->
+          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador.64.bits-0.4.0.exe" 
+             class="btn-download-cp" download>
+            <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
+            <span style="text-align: left;">
+              <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Windows 64-bits</span>
+              <span style="display: block; font-size: 0.8rem; font-weight: 500; opacity: 0.9;">Instalador para Win 10 / 11 (~ 114 MB)</span>
+            </span>
+          </a>
+
+          <!-- Versión 32-bits (Win 7) -->
+          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-Win7-32bits-0.4.0.exe" 
+             class="btn-download-cp blue" download>
+            <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
+            <span style="text-align: left;">
+              <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Windows 32-bits</span>
+              <span style="display: block; font-size: 0.8rem; font-weight: 500; opacity: 0.9;">Compatible con Windows 7 / 32-bits</span>
+            </span>
+          </a>
+        </div>
 
         <!-- Aviso Defender Cuidado Pequeñuelos -->
-        <div class="aviso-defender dark-theme">
+        <div class="aviso-defender dark-theme" style="margin-top: 25px;">
           <i class="fas fa-shield-halved" style="color: var(--cp-neon);"></i>
           <strong>Aviso de seguridad de Windows:</strong> Como el instalador no posee firma digital paga, Windows SmartScreen mostrará un mensaje indicando "Windows protegió su PC". Podés continuar con total seguridad haciendo clic en <strong>Más información</strong> y luego en <strong>Ejecutar de todas formas</strong>.
         </div>
