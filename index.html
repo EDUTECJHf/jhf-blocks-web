@@ -156,7 +156,7 @@
 
     .btn-download {
       display: inline-flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
       padding: 12px 22px;
       border-radius: 8px;
@@ -166,7 +166,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       transition: transform 0.2s, box-shadow 0.2s;
       flex-direction: column;
-      align-items: flex-start;
       text-align: left;
     }
 
@@ -954,9 +953,8 @@
             <h3>Nuestra Misión</h3>
           </div>
           <p>
-            <strong>EduTec JHF</strong>  nace a partir de la necesidad de acompañar a docentes y estudiantes en la comprensión y utilización de las nuevas tecnologías como herramientas para aprender, enseñar y crear. Surge con el propósito de reducir la distancia entre la educación y los avances tecnológicos, brindando conocimientos, estrategias y experiencias prácticas que permitan incorporar la Inteligencia Artificial, la programación, la robótica, la fabricación digital y otras tecnologías emergentes de manera significativa. Buscamos que docentes y estudiantes no sean solamente usuarios de la tecnología, sino que puedan comprenderla, experimentarla, crear con ella y utilizarla para resolver problemas reales. Desde una mirada interdisciplinaria y basada en el enfoque STEAM, EduTec JHF propone enseñar a enseñar creando, promoviendo una educación vinculada con la innovación, el pensamiento crítico, la creatividad y la resolución de problemas.
-          <p>
-           
+            <strong>EduTec JHF</strong> nace a partir de la necesidad de acompañar a docentes y estudiantes en la comprensión y utilización de las nuevas tecnologías como herramientas para aprender, enseñar y crear. Surge con el propósito de reducir la distancia entre la educación y los avances tecnológicos, brindando conocimientos, estrategias y experiencias prácticas que permitan incorporar la Inteligencia Artificial, la programación, la robótica, la fabricación digital y otras tecnologías emergentes de manera significativa. Buscamos que docentes y estudiantes no sean solamente usuarios de la tecnología, sino que puedan comprenderla, experimentarla, crear con ella y utilizarla para resolver problemas reales. Desde una mirada interdisciplinaria y basada en el enfoque STEAM, EduTec JHF propone enseñar a enseñar creando, promoviendo una educación vinculada con la innovación, el pensamiento crítico, la creatividad y la resolución de problemas.
+          </p>
         </div>
 
         <div class="card-about author-card">
@@ -981,7 +979,7 @@
             </div>
             <h4>Germán Hormachea</h4>
             <span class="team-role">Docente Técnico Superior en Electrónica</span>
-            <p> desarrollo técnico y pedagógico, pruebas de hardware y optimización de plataformas de electrónica aplicada.</p>
+            <p>Desarrollo técnico y pedagógico, pruebas de hardware y optimización de plataformas de electrónica aplicada.</p>
           </div>
 
           <div class="team-card">
@@ -989,7 +987,7 @@
               <i class="fas fa-chalkboard-teacher"></i>
             </div>
             <h4>Christopher Farfan</h4>
-            <span class="team-role">Licenciado en Educación &amp; Técnico Superior en  Electromecánico</span>
+            <span class="team-role">Licenciado en Educación &amp; Técnico Superior Electromecánico</span>
             <p>Articulación pedagógica, diseño curricular técnico y estrategias didácticas para el aula.</p>
           </div>
         </div>
@@ -1049,7 +1047,7 @@
       });
     }
 
-    // 3. Contadores
+    // 3. Contadores de Visitas y Descargas
     let visitas = localStorage.getItem('jhf_visitas') || 1045;
     visitas = parseInt(visitas) + 1;
     localStorage.setItem('jhf_visitas', visitas);
@@ -1072,28 +1070,15 @@
           }
         });
 
-        if (totalDescargas > 0) {
-          downloadsElem.textContent = totalDescargas;
-        } else {
-          downloadsElem.textContent = localStorage.getItem('jhf_descargas') || 382;
-        }
+        downloadsElem.textContent = totalDescargas;
       } catch (error) {
-        downloadsElem.textContent = localStorage.getItem('jhf_descargas') || 382;
+        console.error('Error al obtener descargas:', error);
+        downloadsElem.textContent = 'Indisponible';
       }
     }
 
-    obtenerDescargasReales();
-
-    const downloadLinks = document.querySelectorAll('.download-link');
-    downloadLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        let descargas = parseInt(document.getElementById('downloadsCount').textContent) || 382;
-        descargas++;
-        document.getElementById('downloadsCount').textContent = descargas;
-        localStorage.setItem('jhf_descargas', descargas);
-      });
-    });
+    // Ejecutar al cargar la página
+    document.addEventListener('DOMContentLoaded', obtenerDescargasReales);
   </script>
-
 </body>
 </html>
