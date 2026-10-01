@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JHF Blocks - Programación por bloques para robótica educativa | EduTec JHF</title>
-  <meta name="description" content="Entorno de programación por bloques para Arduino, pensado para escuelas técnicas. Gratis, en castellano y funciona sin internet.">
+  <title>EduTec JHF - Software Educativo | JHF Blocks & Cuidado Pequeñuelos</title>
+  <meta name="description" content="Entorno de software educativo para escuelas técnicas: JHF Blocks para robótica con Arduino y Cuidado Pequeñuelos para pensamiento computacional.">
 
-  <!-- Configuración para compartir enlace -->
+  <!-- Configuración Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="JHF Blocks - Programación por bloques para robótica educativa">
-  <meta property="og:description" content="Programá tu robot Arduino arrastrando bloques. Gratis, en castellano y sin necesidad de internet. Para escuelas técnicas y talleres.">
+  <meta property="og:title" content="EduTec JHF - Software Educativo y Robótica">
+  <meta property="og:description" content="Descargá JHF Blocks y Cuidado Pequeñuelos. Soluciones gratuitas en castellano para aprender programación y robótica sin internet.">
   <meta property="og:image" content="https://jordanjose562-cmyk.github.io/jhf-blocks-web/pantalla-inicio.png">
   <meta property="og:url" content="https://jordanjose562-cmyk.github.io/jhf-blocks-web/">
   <meta property="og:site_name" content="EduTec JHF">
@@ -19,10 +19,10 @@
   
   <!-- FontAwesome & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
   <style>
-    /* VARIABLES & RESET */
+    /* VARIABLES & RESET GENERAL */
     :root {
       --primary: #0d6efd;
       --primary-dark: #0a58ca;
@@ -33,12 +33,23 @@
       --white: #ffffff;
       --border: #e9ecef;
       --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+      /* Identidad Cuidado Pequeñuelos */
+      --cp-neon: #39FF14;
+      --cp-red: #FF1744;
+      --cp-blue: #1E88E5;
+      --cp-gold: #FFD700;
+      --cp-dark-bg: #0f172a;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -80,21 +91,20 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--primary);
     }
 
     .logo img {
-      height: 48px;
+      height: 44px;
       width: auto;
       object-fit: contain;
-      display: block;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       align-items: center;
       list-style: none;
     }
@@ -107,6 +117,11 @@
 
     .nav-links a:hover {
       color: var(--primary);
+    }
+
+    .btn-nav-cp {
+      color: var(--cp-blue) !important;
+      font-weight: 700 !important;
     }
 
     .btn-about {
@@ -125,33 +140,125 @@
       color: var(--white);
     }
 
-    /* HERO SECTION */
-    .hero {
-      background: linear-gradient(135deg, #0d6efd 0%, #0a47a1 100%);
+    /* HERO GENERAL EDUTEC JHF */
+    .hero-edutec {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: var(--white);
-      padding: 70px 0;
+      padding: 50px 0 60px 0;
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+    .hero-edutec h1 {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+      font-weight: 900;
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 30px auto;
-      opacity: 0.95;
+    .hero-edutec p.subtitle {
+      font-size: 1.15rem;
+      max-width: 750px;
+      margin: 0 auto 35px auto;
+      opacity: 0.9;
     }
 
-    /* DESCARGAS & METRICAS */
+    .program-cards-selector {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .selector-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 22px;
+      width: 320px;
+      text-align: left;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .selector-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .selector-card.jhf {
+      border-top: 4px solid var(--primary);
+    }
+
+    .selector-card.cp {
+      border-top: 4px solid var(--cp-neon);
+    }
+
+    .selector-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .selector-card p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-bottom: 18px;
+      min-height: 55px;
+    }
+
+    .btn-select {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .btn-select.jhf {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-select.cp {
+      background-color: var(--cp-neon);
+      color: #000;
+    }
+
+    /* SECCION JHF BLOCKS */
+    .section-jhf {
+      padding: 60px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .brand-badge.jhf {
+      background-color: #e7f1ff;
+      color: var(--primary);
+    }
+
+    .brand-badge.cp {
+      background-color: #0f172a;
+      color: var(--cp-neon);
+      border: 1px solid var(--cp-neon);
+    }
+
     .downloads-container {
       display: flex;
       justify-content: center;
       gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 25px;
+      margin: 25px 0;
     }
 
     .btn-download {
@@ -163,7 +270,7 @@
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
       transition: transform 0.2s, box-shadow 0.2s;
       flex-direction: column;
       text-align: left;
@@ -171,23 +278,12 @@
 
     .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.18);
     }
 
-    .btn-installer-64 {
-      background-color: #198754;
-      color: var(--white);
-    }
-
-    .btn-installer-32 {
-      background-color: #0dcaf0;
-      color: #000;
-    }
-
-    .btn-android {
-      background-color: #20c997;
-      color: #000;
-    }
+    .btn-installer-64 { background-color: #198754; color: var(--white); }
+    .btn-installer-32 { background-color: #0dcaf0; color: #000; }
+    .btn-android { background-color: #20c997; color: #000; }
 
     .btn-download > span:first-child {
       display: inline-flex;
@@ -207,58 +303,39 @@
       display: flex;
       justify-content: center;
       gap: 30px;
-      font-size: 0.95rem;
-      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.92rem;
+      background: var(--light);
       padding: 8px 22px;
       border-radius: 20px;
       width: fit-content;
       margin: 0 auto;
-    }
-
-    .metric-item i {
-      margin-right: 6px;
+      border: 1px solid var(--border);
     }
 
     .aviso-defender {
       max-width: 720px;
       margin: 22px auto 0 auto;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: #fff8e6;
+      border: 1px solid #ffe08a;
+      color: #856404;
       border-radius: 8px;
       padding: 14px 18px;
       font-size: 0.88rem;
-      line-height: 1.6;
+      line-height: 1.5;
       text-align: left;
     }
 
-    .aviso-defender strong { font-weight: 700; }
-
-    .aviso-defender i {
-      margin-right: 7px;
-      opacity: 0.9;
-    }
-
-    /* SECCION GENERAL Y CAPTURAS */
-    .section-title {
-      text-align: center;
-      margin: 50px 0 30px 0;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .section-title p {
-      color: var(--secondary);
+    .aviso-defender.dark-theme {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #e2e8f0;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-bottom: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
     }
 
     .gallery-item {
@@ -267,16 +344,11 @@
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      transition: transform 0.2s;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-4px);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: contain;
       background: var(--light);
       display: block;
@@ -284,15 +356,169 @@
     }
 
     .gallery-caption {
-      padding: 15px;
-      font-size: 0.95rem;
-      color: var(--dark);
+      padding: 12px;
+      font-size: 0.9rem;
       text-align: center;
       font-weight: 500;
-      background: var(--white);
     }
 
-    /* SECCION DESAFIOS */
+    /* SECCIÓN CUIDADO PEQUEÑUELOS */
+    .section-cp {
+      padding: 70px 0;
+      background-color: var(--cp-dark-bg);
+      color: var(--white);
+      border-top: 3px solid var(--cp-neon);
+    }
+
+    .cp-header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .cp-header h2 {
+      font-size: 2.3rem;
+      color: var(--white);
+      margin: 8px 0;
+    }
+
+    .cp-header h2 span {
+      color: var(--cp-neon);
+    }
+
+    .cp-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .cp-intro-grid { grid-template-columns: 1fr; }
+    }
+
+    .kalvin-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    .kalvin-avatar {
+      font-size: 3rem;
+      color: var(--cp-blue);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .cp-features-list {
+      list-style: none;
+      margin: 15px 0;
+    }
+
+    .cp-features-list li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .cp-features-list i {
+      color: var(--cp-neon);
+    }
+
+    /* TROFEOS Y PEDAGOGÍA */
+    .trofeos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 30px 0 45px 0;
+    }
+
+    .trofeo-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .trofeo-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .trofeo-card.resuelto .trofeo-icon { color: var(--cp-gold); }
+    .trofeo-card.caminos .trofeo-icon { color: var(--cp-blue); }
+    .trofeo-card.eficiente .trofeo-icon { color: var(--cp-neon); }
+
+    .trofeo-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .trofeo-card p {
+      font-size: 0.88rem;
+      opacity: 0.8;
+    }
+
+    /* CATEGORÍAS CUIDADO PEQUEÑUELOS */
+    .niveles-container {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 45px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .niveles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .nivel-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 18px;
+      border-radius: 8px;
+      border-left: 4px solid var(--cp-blue);
+    }
+
+    .nivel-box.int { border-left-color: var(--cp-gold); }
+    .nivel-box.ava { border-left-color: var(--cp-red); }
+
+    .nivel-box h5 {
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .nivel-box p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .btn-download-cp {
+      background-color: var(--cp-neon);
+      color: #000;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-download-cp:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+    }
+
+    /* SECCION DESAFIOS ONLINE */
     .desafios-section {
       padding: 60px 0;
       background-color: var(--light);
@@ -308,66 +534,11 @@
     }
 
     @media (max-width: 768px) {
-      .desafios-intro {
-        grid-template-columns: 1fr;
-      }
+      .desafios-intro { grid-template-columns: 1fr; }
     }
 
-    .desafios-texto p {
-      color: #495057;
-      margin-bottom: 15px;
-    }
-
-    .desafios-lista {
-      list-style: none;
-      margin-bottom: 15px;
-    }
-
-    .desafios-lista li {
-      padding: 7px 0;
-      color: #495057;
-      font-size: 0.95rem;
-    }
-
-    .desafios-lista i {
-      color: var(--primary);
-      width: 22px;
-    }
-
-    .desafios-nota {
-      font-size: 0.9rem;
-      color: var(--secondary);
-      background: var(--white);
-      padding: 12px 16px;
-      border-radius: 8px;
-      border-left: 3px solid var(--success);
-    }
-
-    .desafios-nota i {
-      color: var(--success);
-      margin-right: 6px;
-    }
-
-    .desafios-acciones {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .btn-jugar {
-      background-color: var(--primary);
-      color: var(--white);
-      justify-content: center;
-    }
-
-    .btn-cargar {
-      background-color: var(--white);
-      color: var(--primary);
-      border: 1px solid var(--primary);
-      justify-content: center;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
+    .btn-jugar { background-color: var(--primary); color: var(--white); justify-content: center; }
+    .btn-cargar { background-color: var(--white); color: var(--primary); border: 1px solid var(--primary); justify-content: center; font-size: 0.95rem; }
 
     .juego-caja {
       background: var(--white);
@@ -396,19 +567,9 @@
       padding: 0 20px;
     }
 
-    .juego-tapa i {
-      font-size: 2.6rem;
-      color: var(--border);
-    }
+    .juego-tapa i { font-size: 2.6rem; color: var(--border); }
 
-    @media (max-width: 768px) {
-      .juego-caja iframe,
-      .juego-tapa {
-        height: 560px;
-      }
-    }
-
-    /* SECCION ROBOTS Y STLS POR CATEGORIA DE JHF BLOCKS */
+    /* SECCION ROBOTS & STLs */
     .robots-stl-section {
       padding: 60px 0;
       background-color: var(--white);
@@ -425,13 +586,9 @@
       color: var(--primary);
     }
 
-    .categoria-bloques-header i {
-      font-size: 1.4rem;
-    }
-
     .stl-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
@@ -443,42 +600,21 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .stl-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
     }
 
     .stl-preview {
-      height: 120px;
+      height: 100px;
       background: var(--white);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       border: 1px solid var(--border);
       color: var(--secondary);
     }
 
-    .stl-preview i {
-      font-size: 3rem;
-    }
-
-    .stl-card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      color: var(--dark);
-    }
-
-    .stl-card p {
-      font-size: 0.88rem;
-      color: var(--secondary);
-      margin-bottom: 15px;
-      flex-grow: 1;
-    }
+    .stl-preview i { font-size: 2.5rem; }
 
     .btn-stl {
       background-color: var(--primary);
@@ -491,15 +627,9 @@
       border-radius: 6px;
       font-size: 0.88rem;
       font-weight: 600;
-      width: 100%;
-      transition: background-color 0.2s;
     }
 
-    .btn-stl:hover {
-      background-color: var(--primary-dark);
-    }
-
-    /* SECCION QUIENES SOMOS */
+    /* QUIENES SOMOS */
     .quienes-somos-section {
       padding: 60px 0;
       background-color: var(--light);
@@ -514,9 +644,7 @@
     }
 
     @media (max-width: 768px) {
-      .quienes-somos-grid {
-        grid-template-columns: 1fr;
-      }
+      .quienes-somos-grid { grid-template-columns: 1fr; }
     }
 
     .card-about {
@@ -525,49 +653,6 @@
       padding: 30px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
-    }
-
-    .icon-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
-      color: var(--primary);
-    }
-
-    .icon-header i {
-      font-size: 1.5rem;
-    }
-
-    .icon-header h3 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-
-    .author-name {
-      font-size: 1.2rem;
-      margin-bottom: 2px;
-    }
-
-    .author-title {
-      color: var(--secondary);
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-    }
-
-    .team-section {
-      margin-bottom: 40px;
-    }
-
-    .team-title {
-      text-align: center;
-      font-size: 1.6rem;
-      color: var(--dark);
-      margin-bottom: 25px;
-    }
-
-    .team-title i {
-      color: var(--primary);
     }
 
     .team-grid {
@@ -580,7 +665,6 @@
       background: var(--white);
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
       border: 1px solid var(--border);
       text-align: center;
     }
@@ -598,27 +682,6 @@
       font-size: 1.5rem;
     }
 
-    .team-card h4 {
-      margin: 0 0 5px 0;
-      font-size: 1.2rem;
-      color: var(--dark);
-    }
-
-    .team-role {
-      display: block;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .team-card p {
-      font-size: 0.9rem;
-      color: var(--secondary);
-      margin: 0;
-      line-height: 1.4;
-    }
-
     /* FOOTER */
     footer {
       background-color: var(--dark);
@@ -626,11 +689,6 @@
       padding: 30px 0;
       text-align: center;
       font-size: 0.9rem;
-    }
-
-    footer p {
-      opacity: 0.8;
-      margin-bottom: 5px;
     }
 
     /* MODAL ACERCA DE */
@@ -647,9 +705,7 @@
       z-index: 2000;
     }
 
-    .modal-overlay.active {
-      display: flex;
-    }
+    .modal-overlay.active { display: flex; }
 
     .modal-content {
       background: var(--white);
@@ -658,7 +714,6 @@
       max-width: 500px;
       width: 90%;
       position: relative;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     }
 
     .modal-close {
@@ -669,20 +724,6 @@
       border: none;
       font-size: 1.3rem;
       cursor: pointer;
-      color: var(--secondary);
-    }
-
-    .modal-header {
-      margin-bottom: 15px;
-    }
-
-    .modal-header h3 {
-      color: var(--primary);
-    }
-
-    .modal-body p {
-      margin-bottom: 12px;
-      font-size: 0.95rem;
     }
   </style>
 </head>
@@ -694,141 +735,233 @@
       <nav>
         <div class="logo">
           <img src="logo.png" alt="EduTec JHF Logo">
-          <span>JHF Blocks</span>
+          <span>EduTec JHF</span>
         </div>
         <ul class="nav-links">
-          <li><a href="#descargas">Descargas</a></li>
-          <li><a href="#capturas">Capturas</a></li>
-          <li><a href="#desafios">Desafíos</a></li>
-          <li><a href="#robots-stl">Robots & STLs</a></li>
-          <li><a href="#quienes-somos">Sobre Nosotros</a></li>
-          <li><button class="btn-about" id="openModalBtn"><i class="fas fa-info-circle"></i> Acerca de</button></li>
+          <li><a href="#jhf-blocks">JHF Blocks</a></li>
+          <li><a href="#cuidado-pequenuelos" class="btn-nav-cp"><i class="fas fa-gamepad"></i> Cuidado Pequeñuelos</a></li>
+          <li><a href="#desafios">Desafíos Web</a></li>
+          <li><a href="#robots-stl">STL 3D</a></li>
+          <li><a href="#quienes-somos">Nosotros</a></li>
+          <li><button class="btn-about" id="openModalBtn"><i class="fas fa-info-circle"></i> Info</button></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- HERO & DESCARGAS -->
-  <section class="hero" id="descargas">
+  <!-- HERO GENERAL EDUTEC JHF -->
+  <section class="hero-edutec">
     <div class="container">
-      <h1>Entorno de Programación Educativa por Bloques</h1>
-      <p>Diseñado especialmente para escuelas técnicas, talleres de electrónica y proyectos de robótica con Arduino.</p>
+      <h1>Software Educativo para Escuelas Técnicas</h1>
+      <p class="subtitle">Ecosistema integral de herramientas gratuitas, en castellano y que funcionan sin necesidad de internet. Desarrolladas en Pilar, Buenos Aires.</p>
+
+      <div class="program-cards-selector">
+        <!-- Tarjeta JHF Blocks -->
+        <div class="selector-card jhf">
+          <h3><i class="fas fa-cubes" style="color: var(--primary);"></i> JHF Blocks</h3>
+          <p>Programación por bloques pensada para controlar placas Arduino reales y sensores.</p>
+          <a href="#jhf-blocks" class="btn-select jhf">Ver JHF Blocks</a>
+        </div>
+
+        <!-- Tarjeta Cuidado Pequeñuelos -->
+        <div class="selector-card cp">
+          <h3><i class="fas fa-robot" style="color: var(--cp-neon);"></i> Cuidado Pequeñuelos</h3>
+          <p>Juego de lógica y pensamiento computacional en pantalla. Paso previo a la robótica.</p>
+          <a href="#cuidado-pequenuelos" class="btn-select cp">Ver Cuidado Pequeñuelos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 1: JHF BLOCKS -->
+  <section id="jhf-blocks" class="section-jhf">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span class="brand-badge jhf">Hardware & Robótica</span>
+        <h2 style="font-size: 2.2rem; color: var(--primary);">JHF Blocks</h2>
+        <p style="color: var(--secondary);">Entorno de programación por bloques para Arduino y electrónica educativa</p>
+      </div>
 
       <div class="downloads-container">
-        <!-- Botón Instalador 64-bits v1.9.0 -->
+        <!-- Windows 64-bits -->
         <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-1.9.0.exe" 
-           class="btn-download btn-installer-64 download-link" id="installer64Btn" download>
+           class="btn-download btn-installer-64" id="installer64Btn" download>
           <span><i class="fab fa-windows"></i> Windows 64-bits (v1.9.0)</span>
-          <span class="peso-archivo">Sistemas de 64 bits</span>
+          <span class="peso-archivo">Instalador para Win 10 / 11</span>
         </a>
 
-        <!-- Botón Instalador Win7 32-bits v1.9.0 -->
+        <!-- Windows 32-bits / Win 7 -->
         <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-Win7-32bits-1.9.0.exe" 
-           class="btn-download btn-installer-32 download-link" id="installer32Btn" download>
+           class="btn-download btn-installer-32" id="installer32Btn" download>
           <span><i class="fab fa-windows"></i> Windows 7 / 32-bits (v1.9.0)</span>
-          <span class="peso-archivo">Sistemas de 32 bits / Win7</span>
+          <span class="peso-archivo">Sistemas de 32 bits</span>
         </a>
 
-        <!-- Botón APK Android -->
+        <!-- APK Android -->
         <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks.apk" 
-           class="btn-download btn-android download-link" id="androidBtn" download>
+           class="btn-download btn-android" id="androidBtn" download>
           <span><i class="fab fa-android"></i> Descargar APK (Android)</span>
           <span class="peso-archivo">Celulares y tablets</span>
         </a>
       </div>
 
-      <!-- AVISO DE WINDOWS -->
+      <!-- Métricas -->
+      <div class="metrics-bar">
+        <span><i class="fas fa-eye"></i> Visitas: <strong id="visitsCount">...</strong></span>
+        <span><i class="fas fa-file-download"></i> Descargas: <strong id="downloadsCount">...</strong></span>
+      </div>
+
+      <!-- Aviso SmartScreen JHF -->
       <div class="aviso-defender">
         <i class="fas fa-shield-halved"></i>
-        <strong>Al abrir el instalador, Windows va a mostrar una pantalla azul</strong>
-        que dice "Windows protegió su PC". Es normal: pasa con todos los programas
-        que no pagan un certificado de firma digital. Tocá
-        <strong>Más información</strong> y después <strong>Ejecutar de todas formas</strong>.
-        El programa se instala sin pedir permisos de administrador.
+        <strong>Aviso de instalación:</strong> Al abrir el instalador en Windows, puede aparecer el aviso "Windows protegió su PC". Hacé clic en <strong>Más información</strong> y luego en <strong>Ejecutar de todas formas</strong>.
       </div>
 
-      <!-- METRICAS DE VISITAS Y DESCARGAS REALES -->
-      <div class="metrics-bar">
-        <span class="metric-item"><i class="fas fa-eye"></i> Visitas: <strong id="visitsCount">...</strong></span>
-        <span class="metric-item"><i class="fas fa-file-download"></i> Descargas: <strong id="downloadsCount">...</strong></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERÍA DE CAPTURAS -->
-  <section class="container" id="capturas">
-    <div class="section-title">
-      <h2>Módulos y Ejemplos del Software</h2>
-      <p>Conocé la interfaz del programa en acción</p>
-    </div>
-
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="pantalla-inicio.png" alt="Pantalla Principal - JHF Blocks">
-        <div class="gallery-caption">Pantalla Principal del Entorno JHF Blocks</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="captura-sensores.png" alt="Módulo de Sensores - JHF Blocks">
-        <div class="gallery-caption">Módulo de Lectura e Integración de Sensores</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="captura-motores.png" alt="Control de Motores - JHF Blocks">
-        <div class="gallery-caption">Control y Programación de Motores y Salidas</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="captura-pantallas.png" alt="Pantallas y Display - JHF Blocks">
-        <div class="gallery-caption">Manejo de Pantallas LCD, Displays y Salidas Visuales</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="ejemplos1.png" alt="Ejemplos Prácticos 1 - JHF Blocks">
-        <div class="gallery-caption">Lógica de Bloques y Guías de Proyectos (Parte 1)</div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="ejemplos2.png" alt="Ejemplos Prácticos 2 - JHF Blocks">
-        <div class="gallery-caption">Ejemplos Avanzados de Código y Electrónica (Parte 2)</div>
+      <!-- Galería JHF -->
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="pantalla-inicio.png" alt="Pantalla Principal JHF Blocks">
+          <div class="gallery-caption">Interfaz Principal de Bloques</div>
+        </div>
+        <div class="gallery-item">
+          <img src="captura-sensores.png" alt="Módulo de Sensores">
+          <div class="gallery-caption">Lectura de Sensores</div>
+        </div>
+        <div class="gallery-item">
+          <img src="captura-motores.png" alt="Control de Motores">
+          <div class="gallery-caption">Control de Motores y Salidas</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN DESAFÍOS: PENSAMIENTO COMPUTACIONAL -->
+  <!-- SECCIÓN 2: CUIDADO PEQUEÑUELOS -->
+  <section id="cuidado-pequenuelos" class="section-cp">
+    <div class="container">
+      <div class="cp-header">
+        <span class="brand-badge cp">Pensamiento Computacional</span>
+        <h2>Cuidado <span>Pequeñuelos</span></h2>
+        <p style="opacity: 0.9;">El juego de desafíos lógicos en pantalla para el Ciclo Básico (12-13 años)</p>
+      </div>
+
+      <div class="cp-intro-grid">
+        <div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--cp-neon);">¿Qué es Cuidado Pequeñuelos?</h3>
+          <p style="margin-bottom: 15px; opacity: 0.9;">
+            Es un programa de escritorio diseñado para enseñar lógica de programación sin necesidad de conectar placas o motores. Implementado y probado en aula en la <strong>EEST N°1</strong>. Funciona como el paso previo ideal antes de pasar a la robótica con Arduino.
+          </p>
+          <ul class="cp-features-list">
+            <li><i class="fas fa-check-circle"></i> <strong>Protagonista:</strong> Ayudá al robot Kalvin a juntar baterías y engranajes.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Expresivo:</strong> Kalvin reacciona con caras a lo que sucede en el mapa.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Acompañamiento docente:</strong> 100% offline, con perfiles independientes por alumno.</li>
+          </ul>
+        </div>
+
+        <div class="kalvin-card">
+          <div class="kalvin-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h4 style="text-align: center; font-size: 1.2rem; margin-bottom: 8px;">Diseñado para el Aula</h4>
+          <p style="font-size: 0.9rem; opacity: 0.85; text-align: center;">
+            Pensado para computadoras compartidas. Cada estudiante ingresa con su nombre y curso, guardando sus progresos y logros de forma individual.
+          </p>
+        </div>
+      </div>
+
+      <!-- IDEA PEDAGÓGICA Y TROFEOS -->
+      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px;">Idea Pedagógica: Trofeos por Nivel</h3>
+      <p style="text-align: center; opacity: 0.85; max-width: 650px; margin: 0 auto 25px auto; font-size: 0.95rem;">
+        En programación, un problema tiene múltiples soluciones. El juego premia la curiosidad y la optimización con 3 reconocimientos:
+      </p>
+
+      <div class="trofeos-grid">
+        <div class="trofeo-card resuelto">
+          <div class="trofeo-icon"><i class="fas fa-star"></i></div>
+          <h4>⭐ Resuelto</h4>
+          <p>Completó la consigna y llevó a Kalvin a la meta.</p>
+        </div>
+
+        <div class="trofeo-card caminos">
+          <div class="trofeo-icon"><i class="fas fa-route"></i></div>
+          <h4>🔀 Múltiples Caminos</h4>
+          <p>Resolvió el nivel explorando 2 recorridos distintos.</p>
+        </div>
+
+        <div class="trofeo-card eficiente">
+          <div class="trofeo-icon"><i class="fas fa-bolt"></i></div>
+          <h4>⚡ Eficiente</h4>
+          <p>Encontró la solución usando la menor cantidad de bloques (o usando bucles "Repetir").</p>
+        </div>
+      </div>
+
+      <!-- NIVELES Y CONTENIDO -->
+      <div class="niveles-container">
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--cp-neon);"><i class="fas fa-layer-group"></i> 90 Desafíos Verificados</h4>
+        <p style="font-size: 0.9rem; opacity: 0.85;">Organizados en 3 categorías progresivas con tutoriales guía:</p>
+
+        <div class="niveles-grid">
+          <div class="nivel-box">
+            <h5>Principiante</h5>
+            <p>30 niveles centrados en secuencias simples de órdenes.</p>
+          </div>
+          <div class="nivel-box int">
+            <h5>Intermedio</h5>
+            <p>30 niveles con rocas, caminos largos y bloque Repetir.</p>
+          </div>
+          <div class="nivel-box ava">
+            <h5>Avanzado</h5>
+            <p>30 niveles con mapas amplios y búsqueda de patrones.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FUNCIONES PARA EL AULA & DESCARGA -->
+      <div style="text-align: center; margin-top: 40px;">
+        <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Descargar Cuidado Pequeñuelos</h3>
+        <p style="font-size: 0.95rem; opacity: 0.85; margin-bottom: 25px;">Requisitos: Windows 10 u 11 (64-bits) | Funcionamiento 100% Offline</p>
+
+        <!-- BOTÓN DE DESCARGA PEQUEÑUELOS -->
+        <a href="AcaVaElLinkDeDescarga" class="btn-download-cp" download>
+          <i class="fas fa-download" style="font-size: 1.4rem;"></i>
+          <span style="text-align: left;">
+            <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Cuidado Pequeñuelos v0.4.0</span>
+            <span style="display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Instalador Windows (.exe) ~ 114 MB</span>
+          </span>
+        </a>
+
+        <!-- Aviso Defender Cuidado Pequeñuelos -->
+        <div class="aviso-defender dark-theme">
+          <i class="fas fa-shield-halved" style="color: var(--cp-neon);"></i>
+          <strong>Aviso de seguridad de Windows:</strong> Como el instalador no posee firma digital paga, Windows SmartScreen mostrará un mensaje indicando "Windows protegió su PC". Podés continuar con total seguridad haciendo clic en <strong>Más información</strong> y luego en <strong>Ejecutar de todas formas</strong>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: DESAFÍOS INTERACTIVOS (SIMULADOR ONLINE) -->
   <section id="desafios" class="desafios-section">
     <div class="container">
-      <div class="section-title">
-        <h2>Desafíos de Pensamiento Computacional</h2>
-        <p>Resolvé problemas con bloques, sin necesidad de una placa Arduino</p>
+      <div class="section-title" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 2rem; color: var(--primary);">Desafíos Web Online</h2>
+        <p style="color: var(--secondary);">Proba el pensamiento computacional en el navegador sin instalar nada</p>
       </div>
 
       <div class="desafios-intro">
         <div class="desafios-texto">
           <p>
-            Diez desafíos con dificultad progresiva donde un robot recorre un tablero
-            juntando engranajes. El estudiante arma la solución con bloques y ve al
-            robot ejecutarla paso a paso, con el bloque que se está ejecutando
-            resaltado en pantalla.
+            Secuencia de 10 desafíos interactivos donde un robot recorre un tablero recolectando piezas. Los estudiantes arman la solución mediante bloques y observan la ejecución paso a paso.
           </p>
-          <ul class="desafios-lista">
-            <li><i class="fas fa-shoe-prints"></i> <strong>Primeros pasos:</strong> dar órdenes en secuencia</li>
-            <li><i class="fas fa-redo"></i> <strong>Repetir:</strong> descubrir el patrón que se repite</li>
-            <li><i class="fas fa-question-circle"></i> <strong>Preguntar:</strong> que el robot decida solo</li>
-            <li><i class="fas fa-award"></i> <strong>Hacerlo mejor:</strong> resolver con menos bloques</li>
-          </ul>
-          <p class="desafios-nota">
-            <i class="fas fa-wifi"></i>
-            Funciona en la computadora y en el celular. No requiere instalación.
+          <p class="desafios-nota" style="background: var(--white); padding: 12px; border-radius: 8px; border-left: 3px solid var(--success); font-size: 0.9rem; margin-top: 10px;">
+            <i class="fas fa-wifi" style="color: var(--success);"></i> Compatible con computadoras, tablets y celulares.
           </p>
         </div>
 
-        <div class="desafios-acciones">
+        <div class="desafios-acciones" style="display: flex; flex-direction: column; gap: 10px;">
           <a href="desafios/" target="_blank" class="btn-download btn-jugar">
-            <i class="fas fa-play"></i> Abrir en pantalla completa
+            <i class="fas fa-play"></i> Pantalla completa
           </a>
           <button type="button" class="btn-download btn-cargar" id="cargarJuegoBtn">
-            <i class="fas fa-gamepad"></i> Probar acá mismo
+            <i class="fas fa-gamepad"></i> Cargar acá
           </button>
         </div>
       </div>
@@ -836,159 +969,97 @@
       <div class="juego-caja" id="juegoCaja">
         <div class="juego-tapa" id="juegoTapa">
           <i class="fas fa-gamepad"></i>
-          <p>Tocá "Probar acá mismo" para cargar los desafíos</p>
+          <p>Tocá "Cargar acá" para inicializar los desafíos interactivos</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- APARTADO DE ROBOTS Y ARCHIVOS STL ORGANIZADO POR CATEGORÍAS DE JHF BLOCKS -->
+  <!-- SECCIÓN 4: ROBOTS & ARCHIVOS STL -->
   <section id="robots-stl" class="robots-stl-section">
     <div class="container">
-      <div class="section-title">
-        <h2>Robots y Diseños 3D (STL)</h2>
-        <p>Descargá e imprimí las piezas 3D organizadas por cada categoría del entorno JHF Blocks</p>
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 2rem; color: var(--primary);">Diseños 3D e Impresión (STL)</h2>
+        <p style="color: var(--secondary);">Piezas y chasis para armar los robots en la escuela técnica</p>
       </div>
 
-      <!-- CATEGORÍA 1: MOTORES & SALIDAS -->
+      <!-- Categoria Motores -->
       <div class="categoria-bloques-header">
         <i class="fas fa-cogs"></i>
-        <h3>Motores & Actuadores</h3>
+        <h3>Chasis & Actuadores</h3>
       </div>
       <div class="stl-grid">
         <div class="stl-card">
           <div class="stl-preview"><i class="fas fa-robot"></i></div>
           <h4>Chasis Robot 2WD</h4>
-          <p>Base principal para motores DC de reductora amarilla y rueda loca.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
+          <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Base para motores DC con reductora amarilla y rueda loca.</p>
+          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
         </div>
         <div class="stl-card">
           <div class="stl-preview"><i class="fas fa-microchip"></i></div>
           <h4>Soporte Microservo SG90</h4>
-          <p>Montaje universal para servomotores en chasis de robótica.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-dharmachakra"></i></div>
-          <h4>Rueda de Tracción 65mm</h4>
-          <p>Rueda impresa con acople directo para eje D de motor DC.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
+          <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Montaje para servomotores en chasis.</p>
+          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
         </div>
       </div>
 
-      <!-- CATEGORÍA 2: SENSORES -->
+      <!-- Categoria Sensores -->
       <div class="categoria-bloques-header">
         <i class="fas fa-wave-square"></i>
-        <h3>Sensores</h3>
+        <h3>Sensores & Soportes</h3>
       </div>
       <div class="stl-grid">
         <div class="stl-card">
           <div class="stl-preview"><i class="fas fa-eye"></i></div>
-          <h4>Soporte Sensor Ultrasonido</h4>
-          <p>Soporte frontal para sensor HC-SR04 ajustable al chasis.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-route"></i></div>
-          <h4>Soporte Sensores TCRT5000</h4>
-          <p>Base inferior para 2 u 8 sensores seguidores de línea.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-      </div>
-
-      <!-- CATEGORÍA 3: PANTALLAS & DISPLAYS -->
-      <div class="categoria-bloques-header">
-        <i class="fas fa-tv"></i>
-        <h3>Pantallas & Visualización</h3>
-      </div>
-      <div class="stl-grid">
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-desktop"></i></div>
-          <h4>Marco para LCD 16x2 I2C</h4>
-          <p>Carcasa protectora para pantalla LCD de proyectos portátiles.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-border-all"></i></div>
-          <h4>Soporte Matriz LED 8x8</h4>
-          <p>Base de fijación para matriz MAX7219.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-      </div>
-
-      <!-- CATEGORÍA 4: ALIMENTACIÓN & ESTRUCTURA -->
-      <div class="categoria-bloques-header">
-        <i class="fas fa-battery-full"></i>
-        <h3>Estructura & Alimentación</h3>
-      </div>
-      <div class="stl-grid">
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-car-battery"></i></div>
-          <h4>Soporte Portapilas 18650</h4>
-          <p>Caja de encastre seguro para 2 baterías Li-Ion 18650.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
-        </div>
-        <div class="stl-card">
-          <div class="stl-preview"><i class="fas fa-box"></i></div>
-          <h4>Carcasa Protectora Arduino UNO</h4>
-          <p>Caja protectora encastrable sin tornillos para placa Arduino.</p>
-          <a href="#" class="btn-stl download-link"><i class="fas fa-download"></i> Descargar STL</a>
+          <h4>Soporte Ultrasonido HC-SR04</h4>
+          <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Soporte frontal ajustable para sensor de distancia.</p>
+          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN QUIÉNES SOMOS / EDUTEC JHF -->
+  <!-- SECCIÓN 5: QUIÉNES SOMOS -->
   <section id="quienes-somos" class="quienes-somos-section">
     <div class="container">
-      <div class="section-title">
-        <h2>Sobre EduTec JHF</h2>
-        <p class="subtitle">Educación + Tecnología + Innovación: "Enseñar a enseñar creando"</p>
+      <div style="text-align: center; margin-bottom: 35px;">
+        <h2 style="font-size: 2rem; color: var(--dark);">Sobre EduTec JHF</h2>
+        <p style="color: var(--secondary);">Educación + Tecnología + Innovación: "Enseñar a enseñar creando"</p>
       </div>
 
       <div class="quienes-somos-grid">
-        <div class="card-about main-card">
-          <div class="icon-header">
-            <i class="fas fa-rocket"></i>
-            <h3>Nuestra Misión</h3>
-          </div>
-          <p>
-            <strong>EduTec JHF</strong> nace a partir de la necesidad de acompañar a docentes y estudiantes en la comprensión y utilización de las nuevas tecnologías como herramientas para aprender, enseñar y crear. Surge con el propósito de reducir la distancia entre la educación y los avances tecnológicos, brindando conocimientos, estrategias y experiencias prácticas que permitan incorporar la Inteligencia Artificial, la programación, la robótica, la fabricación digital y otras tecnologías emergentes de manera significativa. Buscamos que docentes y estudiantes no sean solamente usuarios de la tecnología, sino que puedan comprenderla, experimentarla, crear con ella y utilizarla para resolver problemas reales. Desde una mirada interdisciplinaria y basada en el enfoque STEAM, EduTec JHF propone enseñar a enseñar creando, promoviendo una educación vinculada con la innovación, el pensamiento crítico, la creatividad y la resolución de problemas.
+        <div class="card-about">
+          <h3 style="color: var(--primary); margin-bottom: 12px;"><i class="fas fa-rocket"></i> Nuestra Misión</h3>
+          <p style="font-size: 0.95rem; color: #495057;">
+            <strong>EduTec JHF</strong> nace para acompañar a docentes y estudiantes en la comprensión y utilización de las nuevas tecnologías. Buscamos brindar herramientas prácticas en robótica, programación y cultura Maker para que las escuelas técnicas no solo utilicen tecnología, sino que la comprendan y creen soluciones reales con ella.
           </p>
         </div>
 
-        <div class="card-about author-card">
-          <div class="icon-header">
-            <i class="fas fa-user-graduate"></i>
-            <h3>Desarrollador &amp; Coordinación</h3>
-          </div>
-          <p class="author-name"><strong>Prof. Jordán José</strong></p>
-          <p class="author-title">Técnico Superior en Electrónica &amp; Docente</p>
-          <p>
-            Diseñador de contenido técnico-pedagógico, manuales de laboratorio y creador de <strong>JHF Blocks</strong>. Apasionado por la integración de la Robótica Educativa, la Cultura Maker y la metodología STEAM en el aula pública y técnica.
+        <div class="card-about">
+          <h3 style="color: var(--primary); margin-bottom: 12px;"><i class="fas fa-user-graduate"></i> Coordinación</h3>
+          <p><strong>Prof. Jordán José</strong></p>
+          <p style="font-size: 0.88rem; color: var(--secondary); margin-bottom: 8px;">Técnico Superior en Electrónica & Docente</p>
+          <p style="font-size: 0.9rem; color: #495057;">
+            Creador de JHF Blocks y Cuidado Pequeñuelos. Desarrollador de contenidos técnico-pedagógicos para la educación pública.
           </p>
         </div>
       </div>
 
       <div class="team-section">
-        <h3 class="team-title"><i class="fas fa-users"></i> Equipo Docente</h3>
+        <h3 style="text-align: center; margin-bottom: 25px; font-size: 1.4rem;"><i class="fas fa-users" style="color: var(--primary);"></i> Equipo Docente</h3>
         <div class="team-grid">
           <div class="team-card">
-            <div class="team-icon">
-              <i class="fas fa-microchip"></i>
-            </div>
+            <div class="team-icon"><i class="fas fa-microchip"></i></div>
             <h4>Germán Hormachea</h4>
-            <span class="team-role">Docente Técnico Superior en Electrónica</span>
-            <p>Desarrollo técnico y pedagógico, pruebas de hardware y optimización de plataformas de electrónica aplicada.</p>
+            <span style="color: var(--primary); font-weight: 600; font-size: 0.88rem; display: block; margin-bottom: 8px;">Docente Técnico Superior en Electrónica</span>
+            <p style="font-size: 0.88rem; color: var(--secondary);">Desarrollo técnico, pruebas de hardware y optimización de plataformas.</p>
           </div>
 
           <div class="team-card">
-            <div class="team-icon">
-              <i class="fas fa-chalkboard-teacher"></i>
-            </div>
+            <div class="team-icon"><i class="fas fa-chalkboard-teacher"></i></div>
             <h4>Christopher Farfan</h4>
-            <span class="team-role">Licenciado en Educación &amp; Técnico Superior Electromecánico</span>
-            <p>Articulación pedagógica, diseño curricular técnico y estrategias didácticas para el aula.</p>
+            <span style="color: var(--primary); font-weight: 600; font-size: 0.88rem; display: block; margin-bottom: 8px;">Lic. en Educación & Técnico Electromecánico</span>
+            <p style="font-size: 0.88rem; color: var(--secondary);">Articulación pedagógica y diseño curricular técnico.</p>
           </div>
         </div>
       </div>
@@ -998,7 +1069,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 JHF Blocks - EduTec JHF. Todos los derechos reservados.</p>
+      <p>&copy; 2026 EduTec JHF. Todos los derechos reservados.</p>
       <p>Desarrollado por Prof. Jordán José | Registro DNDA Expediente N° EX-2026-88770799--APN-DNDA#MJ</p>
       <p style="margin-top: 10px;">
         <a href="mailto:formaciondocentesteam@gmail.com" style="color: var(--white); opacity: 0.9;">
@@ -1008,23 +1079,20 @@
     </div>
   </footer>
 
-  <!-- MODAL "ACERCA DE" -->
+  <!-- MODAL ACERCA DE -->
   <div class="modal-overlay" id="aboutModal">
     <div class="modal-content">
       <button class="modal-close" id="closeModalBtn">&times;</button>
-      <div class="modal-header">
-        <h3>Acerca de JHF Blocks</h3>
-      </div>
-      <div class="modal-body">
-        <p><strong>Versión del Software:</strong> v1.9.0 (Windows 64-bit / Windows 7 32-bit)</p>
-        <p>Entorno de programación visual para robótica educativa y automatización.</p>
-      </div>
+      <h3 style="color: var(--primary); margin-bottom: 12px;">Ecosistema EduTec JHF</h3>
+      <p style="font-size: 0.92rem; margin-bottom: 8px;"><strong>JHF Blocks:</strong> v1.9.0 (Entorno de Robótica Arduino)</p>
+      <p style="font-size: 0.92rem; margin-bottom: 12px;"><strong>Cuidado Pequeñuelos:</strong> v0.4.0 (Juego de Lógica)</p>
+      <p style="font-size: 0.88rem; color: var(--secondary);">Desarrollados para funcionar sin necesidad de conexión a internet en escuelas técnicas.</p>
     </div>
   </div>
 
-  <!-- SCRIPT INTERACTIVO CON OBTENCIÓN REAL DE DESCARGAS DE GITHUB -->
+  <!-- JAVASCRIPT -->
   <script>
-    // 1. Cargar el juego interactivo mediante iframe
+    // Cargar iframe de desafíos
     const cargarJuegoBtn = document.getElementById('cargarJuegoBtn');
     const juegoCaja = document.getElementById('juegoCaja');
 
@@ -1034,7 +1102,7 @@
       });
     }
 
-    // 2. Modal "Acerca de"
+    // Modal Info
     const openModalBtn = document.getElementById('openModalBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const aboutModal = document.getElementById('aboutModal');
@@ -1047,17 +1115,20 @@
       });
     }
 
-    // 3. Contadores de Visitas y Descargas
+    // Contadores
     let visitas = localStorage.getItem('jhf_visitas') || 1045;
     visitas = parseInt(visitas) + 1;
     localStorage.setItem('jhf_visitas', visitas);
-    document.getElementById('visitsCount').textContent = visitas;
+    if (document.getElementById('visitsCount')) {
+      document.getElementById('visitsCount').textContent = visitas;
+    }
 
     async function obtenerDescargasReales() {
       const downloadsElem = document.getElementById('downloadsCount');
+      if (!downloadsElem) return;
       try {
         const response = await fetch('https://api.github.com/repos/jordanjose562-cmyk/jhf-blocks-web/releases');
-        if (!response.ok) throw new Error('Error al conectar con la API de GitHub');
+        if (!response.ok) throw new Error('API Error');
         
         const releases = await response.json();
         let totalDescargas = 0;
@@ -1072,12 +1143,10 @@
 
         downloadsElem.textContent = totalDescargas;
       } catch (error) {
-        console.error('Error al obtener descargas:', error);
         downloadsElem.textContent = 'Indisponible';
       }
     }
 
-    // Ejecutar al cargar la página
     document.addEventListener('DOMContentLoaded', obtenerDescargasReales);
   </script>
 </body>
