@@ -10,8 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="EduTec JHF - Software Educativo y Robótica">
   <meta property="og:description" content="Descargá JHF Blocks y Cuidado Pequeñuelos. Soluciones gratuitas en castellano para aprender programación y robótica sin internet.">
-  <meta property="og:image" content="https://jordanjose562-cmyk.github.io/jhf-blocks-web/pantalla-inicio.png">
-  <meta property="og:url" content="https://jordanjose562-cmyk.github.io/jhf-blocks-web/">
+  <meta property="og:image" content="PANTALA_INICIO_PEQUEÑUELOS.png">
+  <meta property="og:url" content="https://edutecjhf.github.io/jhf-blocks-web/">
   <meta property="og:site_name" content="EduTec JHF">
   <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary_large_image">
@@ -427,6 +427,43 @@
 
     .cp-features-list i {
       color: var(--cp-neon);
+    }
+
+    /* GALERÍA ESPECÍFICA CUIDADO PEQUEÑUELOS */
+    .cp-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0 45px 0;
+    }
+
+    .cp-gallery-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .cp-gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--cp-neon);
+    }
+
+    .cp-gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
+    .cp-gallery-caption {
+      padding: 12px 15px;
+      font-size: 0.88rem;
+      text-align: center;
+      color: #e2e8f0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     /* TROFEOS Y PEDAGOGÍA */
@@ -883,6 +920,54 @@
           <p style="font-size: 0.9rem; opacity: 0.85; text-align: center;">
             Pensado para computadoras compartidas. Cada estudiante ingresa con su nombre y curso, guardando sus progresos y logros de forma individual.
           </p>
+        </div>
+      </div>
+
+      <!-- GALERÍA DE CAPTURAS DE PANTALLA DE CUIDADO PEQUEÑUELOS -->
+      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px; color: var(--cp-neon);">Módulos e Interfaz del Juego</h3>
+      <p style="text-align: center; opacity: 0.85; max-width: 650px; margin: 0 auto 20px auto; font-size: 0.95rem;">
+        Conocé las pantallas principales, el sistema de perfiles y el entorno de bloques de Cuidado Pequeñuelos:
+      </p>
+
+      <div class="cp-gallery-grid">
+        <div class="cp-gallery-item">
+          <img src="PANTALA_INICIO_PEQUEÑUELOS.png" alt="Pantalla de Inicio Cuidado Pequeñuelos">
+          <div class="cp-gallery-caption">Pantalla Principal del Juego</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="CREAR_PERFILES.png" alt="Gestión de Perfiles de Alumnos">
+          <div class="cp-gallery-caption">Perfiles de Alumnos por Curso</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="PRINCIPIANTE_INTERMEDIO_AVANZADO.png" alt="Selección de Dificultad">
+          <div class="cp-gallery-caption">Categorías de Dificultad</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="NIVELES_CUIDADO_PEQUEÑUELO.png" alt="Mapa de Niveles">
+          <div class="cp-gallery-caption">Mapa y Selección de Niveles</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Nivel Tutorial Kalvin">
+          <div class="cp-gallery-caption">Nivel Inicial de Presentación</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="TUTORIAL_CUIDADO_PEQUEÑUELO.png" alt="Guía Tutorial Paso a Paso">
+          <div class="cp-gallery-caption">Tutorial Guiado en Pantalla</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="SISTEMA_BLOQUES.png" alt="Entorno de Programación por Bloques">
+          <div class="cp-gallery-caption">Sistema de Programación por Bloques</div>
+        </div>
+
+        <div class="cp-gallery-item">
+          <img src="MENU_CONFIGURACIONES.png" alt="Menú de Ajustes y Clave Docente">
+          <div class="cp-gallery-caption">Ajustes y Seguridad Docente</div>
         </div>
       </div>
 
