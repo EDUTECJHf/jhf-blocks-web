@@ -299,14 +299,14 @@
       border: 1px solid #7DD3FC;
     }
 
-    /* MOCKUP NOTEBOOK / LAPTOP PARA JHF BLOCKS */
+    /* MOCKUP NOTEBOOK / LAPTOP CORREGIDO */
     .notebook-mockup-container {
-      max-width: 800px;
-      margin: 35px auto 30px auto;
+      max-width: 850px;
+      margin: 30px auto 0 auto;
       background: #1e293b;
-      border-radius: 16px 16px 4px 4px;
-      padding: 12px 12px 0 12px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+      border-radius: 14px 14px 0 0;
+      padding: 10px 10px 0 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       border: 2px solid #334155;
     }
 
@@ -314,7 +314,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
 
     .window-dot {
@@ -327,7 +327,7 @@
     .dot-green { background-color: #10b981; }
 
     .notebook-screen {
-      border-radius: 8px 8px 0 0;
+      border-radius: 6px 6px 0 0;
       overflow: hidden;
       background: #ffffff;
       border: 1px solid #475569;
@@ -336,18 +336,16 @@
     .notebook-screen img {
       width: 100%;
       height: auto;
-      max-height: 420px;
-      object-fit: contain;
       display: block;
-      background: #f8fafc;
+      object-fit: cover;
     }
 
     .notebook-base {
       height: 16px;
       background: linear-gradient(to bottom, #94a3b8, #64748b);
       border-radius: 0 0 16px 16px;
-      max-width: 860px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 0 auto 35px auto;
       position: relative;
       box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     }
@@ -358,10 +356,10 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: #475569;
-      border-radius: 0 0 4px 4px;
+      width: 120px;
+      height: 5px;
+      background: #334155;
+      border-radius: 0 0 5px 5px;
     }
 
     .downloads-container {
@@ -1001,7 +999,7 @@
         <p style="color: var(--secondary);">Entorno de programación por bloques para Arduino y electrónica educativa</p>
       </div>
 
-      <!-- MOCKUP NOTEBOOK / LAPTOP CON CAPTURA_NOTEBOOK.PNG -->
+      <!-- MOCKUP NOTEBOOK / LAPTOP PARA JHF BLOCKS -->
       <div class="notebook-mockup-container">
         <div class="notebook-top-bar">
           <div class="window-dot dot-red"></div>
@@ -1010,7 +1008,7 @@
           <span style="color: #94a3b8; font-size: 0.8rem; margin-left: 10px; font-weight: 500;"><i class="fas fa-laptop"></i> JHF Blocks v1.12.0 — Entorno de Programación en Notebook</span>
         </div>
         <div class="notebook-screen">
-          <img src="captura_notebook.png" alt="JHF Blocks corriendo en Notebook escolar">
+          <img src="pantalla-inicio.png" alt="JHF Blocks corriendo en Notebook escolar">
         </div>
       </div>
       <div class="notebook-base"></div>
