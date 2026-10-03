@@ -34,12 +34,12 @@
       --border: #e2e8f0;
       --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 
-      /* Identidad Cuidado Pequeñuelos (Paleta Flúor Vibrante) */
+      /* Identidad Cuidado Pequeñuelos (Paleta Flúor) */
       --cp-bg: #f8fafc;
       --cp-green-fluor: #00E676; /* Verde Flúor */
       --cp-blue-fluor: #00B0FF;  /* Azul Flúor */
       --cp-orange-fluor: #FF6D00;/* Naranja Flúor */
-      --cp-purple-fluor: #9C27B0;/* Violeta/Púrpura Flúor para Extra */
+      --cp-purple-fluor: #9C27B0;/* Violeta/Púrpura Flúor */
       --cp-gold: #d97706;
     }
 
@@ -47,6 +47,11 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
     }
 
     html {
@@ -69,9 +74,10 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
+      width: 100%;
     }
 
-    /* HEADER & NAVBAR */
+    /* HEADER & NAVBAR RESPONSIVO */
     header {
       background-color: var(--white);
       border-bottom: 1px solid var(--border);
@@ -85,7 +91,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 70px;
+      min-height: 70px;
+      padding: 10px 0;
+      position: relative;
     }
 
     .logo {
@@ -101,6 +109,15 @@
       height: 44px;
       width: auto;
       object-fit: contain;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--dark);
+      cursor: pointer;
     }
 
     .nav-links {
@@ -141,6 +158,30 @@
       color: var(--white);
     }
 
+    @media (max-width: 850px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
     /* HERO GENERAL EDUTEC JHF */
     .hero-edutec {
       background: linear-gradient(135deg, #0d6efd 0%, #0a47a1 100%);
@@ -150,13 +191,13 @@
     }
 
     .hero-edutec h1 {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       margin-bottom: 10px;
       font-weight: 900;
     }
 
     .hero-edutec p.subtitle {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       max-width: 750px;
       margin: 0 auto 35px auto;
       opacity: 0.95;
@@ -176,6 +217,7 @@
       border-radius: 12px;
       padding: 22px;
       width: 320px;
+      max-width: 100%;
       text-align: left;
       transition: transform 0.2s, background-color 0.2s;
     }
@@ -433,7 +475,7 @@
     /* GALERÍA CUIDADO PEQUEÑUELOS */
     .cp-gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       margin: 30px 0 45px 0;
     }
@@ -549,7 +591,7 @@
       color: var(--secondary);
     }
 
-    /* ESTILOS DE BOTONES FLÚOR PEQUEÑUELOS */
+    /* BOTONES FLÚOR DE DESCARGA PEQUEÑUELOS */
     .btn-download-cp {
       padding: 14px 22px;
       border-radius: 10px;
@@ -697,7 +739,7 @@
     .stl-preview i { font-size: 2.5rem; }
 
     .btn-stl {
-      background-color: var(--primary);
+      background-color: var(--secondary);
       color: var(--white);
       display: inline-flex;
       align-items: center;
@@ -707,6 +749,8 @@
       border-radius: 6px;
       font-size: 0.88rem;
       font-weight: 600;
+      cursor: not-allowed;
+      opacity: 0.8;
     }
 
     /* QUIENES SOMOS */
@@ -817,7 +861,10 @@
           <img src="logo.png" alt="EduTec JHF Logo">
           <span>EduTec JHF</span>
         </div>
-        <ul class="nav-links">
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
           <li><a href="#jhf-blocks">JHF Blocks</a></li>
           <li><a href="#cuidado-pequenuelos" class="btn-nav-cp"><i class="fas fa-gamepad"></i> Cuidado Pequeñuelos</a></li>
           <li><a href="#desafios">Desafíos Web</a></li>
@@ -928,7 +975,7 @@
       <div class="cp-header">
         <span class="brand-badge cp">Pensamiento Computacional</span>
         <h2>Cuidado <span>Pequeñuelos</span></h2>
-        <p style="color: var(--secondary);">El juego de desafíos lógicos en pantalla para primaria y secundaria (8 a 14 años)</p>
+        <p style="color: var(--secondary);">El juego de desafíos lógicos en pantalla desde 2.º ciclo de primaria hasta secundaria (10 a 14 años)</p>
       </div>
 
       <div class="cp-intro-grid">
@@ -1049,39 +1096,39 @@
           </div>
           <div class="nivel-box ext">
             <h5>Escenario Extra</h5>
-            <p>20 niveles especiales de práctica intensiva y lógica superior.</p>
+            <p>20 niveles con barreras láser que se prenden y apagan: hay que usar el bloque Esperar para pasar en el momento justo.</p>
           </div>
         </div>
       </div>
 
-      <!-- FUNCIONES PARA EL AULA & DESCARGA -->
+      <!-- FUNCIONES PARA EL AULA & DESCARGA v0.6.0 -->
       <div style="text-align: center; margin-top: 40px;">
-        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Descargar Cuidado Pequeñuelos</h3>
+        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Descargar Cuidado Pequeñuelos v0.6.0</h3>
         <p style="font-size: 0.95rem; color: var(--secondary); margin-bottom: 25px;">Seleccioná la opción adecuada para las computadoras o dispositivos de tu escuela | Funcionamiento 100% Offline</p>
 
-        <!-- BOTONES DE DESCARGA PEQUEÑUELOS (VERDE, AZUL Y NARANJA FLÚOR) -->
+        <!-- BOTONES DE DESCARGA PEQUEÑUELOS (NUEVOS ENLACES v0.6.0) -->
         <div class="downloads-container">
-          <!-- Versión 64-bits (Verde Flúor) -->
-          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador.64.bits-0.4.0.exe" 
+          <!-- Windows 64-bits v0.6.0 -->
+          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-0.6.0.exe" 
              class="btn-download-cp win64" download>
             <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
             <span style="text-align: left;">
-              <span style="display: block; font-size: 1.05rem; font-weight: 900;">Windows 64-bits (v0.4.0)</span>
-              <span style="display: block; font-size: 0.78rem; font-weight: 500; opacity: 0.9;">Win 10 / 11 (~ 114 MB)</span>
+              <span style="display: block; font-size: 1.05rem; font-weight: 900;">Windows 64-bits (v0.6.0)</span>
+              <span style="display: block; font-size: 0.78rem; font-weight: 500; opacity: 0.9;">Win 10 / 11 / Netbooks</span>
             </span>
           </a>
 
-          <!-- Versión 32-bits (Azul Flúor) -->
-          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-Win7-32bits-0.4.0.exe" 
+          <!-- Windows 32-bits v0.6.0 -->
+          <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-Win7-32bits-0.6.0.exe" 
              class="btn-download-cp win32" download>
             <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
             <span style="text-align: left;">
-              <span style="display: block; font-size: 1.05rem; font-weight: 900;">Windows 32-bits (v0.4.0)</span>
+              <span style="display: block; font-size: 1.05rem; font-weight: 900;">Windows 32-bits (v0.6.0)</span>
               <span style="display: block; font-size: 0.78rem; font-weight: 500; opacity: 0.9;">Windows 7 / 32-bits</span>
             </span>
           </a>
 
-          <!-- Versión APK Android (Naranja Flúor) -->
+          <!-- Android APK v0.6.0 -->
           <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-0.6.0.apk" 
              class="btn-download-cp apk" download>
             <i class="fab fa-android" style="font-size: 1.6rem;"></i>
@@ -1156,13 +1203,13 @@
           <div class="stl-preview"><i class="fas fa-robot"></i></div>
           <h4>Chasis Robot 2WD</h4>
           <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Base para motores DC con reductora amarilla y rueda loca.</p>
-          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
+          <span class="btn-stl"><i class="fas fa-clock"></i> Próximamente</span>
         </div>
         <div class="stl-card">
           <div class="stl-preview"><i class="fas fa-microchip"></i></div>
           <h4>Soporte Microservo SG90</h4>
           <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Montaje para servomotores en chasis.</p>
-          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
+          <span class="btn-stl"><i class="fas fa-clock"></i> Próximamente</span>
         </div>
       </div>
 
@@ -1176,7 +1223,7 @@
           <div class="stl-preview"><i class="fas fa-eye"></i></div>
           <h4>Soporte Ultrasonido HC-SR04</h4>
           <p style="font-size: 0.85rem; color: var(--secondary); margin-bottom: 12px;">Soporte frontal ajustable para sensor de distancia.</p>
-          <a href="#" class="btn-stl"><i class="fas fa-download"></i> Descargar STL</a>
+          <span class="btn-stl"><i class="fas fa-clock"></i> Próximamente</span>
         </div>
       </div>
     </div>
@@ -1248,13 +1295,30 @@
       <button class="modal-close" id="closeModalBtn">&times;</button>
       <h3 style="color: var(--primary); margin-bottom: 12px;">Ecosistema EduTec JHF</h3>
       <p style="font-size: 0.92rem; margin-bottom: 8px;"><strong>JHF Blocks:</strong> v1.12.0 (Entorno de Robótica Arduino)</p>
-      <p style="font-size: 0.92rem; margin-bottom: 12px;"><strong>Cuidado Pequeñuelos:</strong> v0.4.0 / v0.6.0 (Juego de Lógica)</p>
+      <p style="font-size: 0.92rem; margin-bottom: 12px;"><strong>Cuidado Pequeñuelos:</strong> v0.6.0 (Juego de Lógica)</p>
       <p style="font-size: 0.88rem; color: var(--secondary);">Desarrollados para funcionar sin necesidad de conexión a internet en el aula.</p>
     </div>
   </div>
 
   <!-- JAVASCRIPT -->
   <script>
+    // Menú Hamburguesa en Celulares
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      // Cierra el menú al hacer clic en cualquier enlace
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+
     // Cargar iframe de desafíos
     const cargarJuegoBtn = document.getElementById('cargarJuegoBtn');
     const juegoCaja = document.getElementById('juegoCaja');
