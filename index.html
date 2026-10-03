@@ -284,6 +284,7 @@
     .btn-installer-64 { background-color: #198754; color: var(--white); }
     .btn-installer-32 { background-color: #0dcaf0; color: #000; }
     .btn-android { background-color: #20c997; color: #000; }
+    .btn-versions { background-color: #6c757d; color: var(--white); }
 
     .btn-download > span:first-child {
       display: inline-flex;
@@ -794,24 +795,31 @@
 
       <div class="downloads-container">
         <!-- Windows 64-bits -->
-        <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-1.9.0.exe" 
+        <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-1.12.0.exe" 
            class="btn-download btn-installer-64" id="installer64Btn" download>
-          <span><i class="fab fa-windows"></i> Windows 64-bits (v1.9.0)</span>
+          <span><i class="fab fa-windows"></i> Windows 64-bits (v1.12.0)</span>
           <span class="peso-archivo">Instalador para Win 10 / 11</span>
         </a>
 
         <!-- Windows 32-bits / Win 7 -->
-        <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-Win7-32bits-1.9.0.exe" 
+        <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-Win7-32bits-1.12.0.exe" 
            class="btn-download btn-installer-32" id="installer32Btn" download>
-          <span><i class="fab fa-windows"></i> Windows 7 / 32-bits (v1.9.0)</span>
+          <span><i class="fab fa-windows"></i> Windows 7 / 32-bits (v1.12.0)</span>
           <span class="peso-archivo">Sistemas de 32 bits</span>
         </a>
 
         <!-- APK Android -->
-        <a href="https://github.com/jordanjose562-cmyk/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks.apk" 
+        <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks.apk" 
            class="btn-download btn-android" id="androidBtn" download>
           <span><i class="fab fa-android"></i> Descargar APK (Android)</span>
           <span class="peso-archivo">Celulares y tablets</span>
+        </a>
+
+        <!-- Versiones Anteriores en GitHub -->
+        <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases" 
+           target="_blank" rel="noopener noreferrer" class="btn-download btn-versions">
+          <span><i class="fab fa-github"></i> Versiones Anteriores</span>
+          <span class="peso-archivo">Ver historial en GitHub</span>
         </a>
       </div>
 
@@ -1108,7 +1116,7 @@
     <div class="modal-content">
       <button class="modal-close" id="closeModalBtn">&times;</button>
       <h3 style="color: var(--primary); margin-bottom: 12px;">Ecosistema EduTec JHF</h3>
-      <p style="font-size: 0.92rem; margin-bottom: 8px;"><strong>JHF Blocks:</strong> v1.9.0 (Entorno de Robótica Arduino)</p>
+      <p style="font-size: 0.92rem; margin-bottom: 8px;"><strong>JHF Blocks:</strong> v1.12.0 (Entorno de Robótica Arduino)</p>
       <p style="font-size: 0.92rem; margin-bottom: 12px;"><strong>Cuidado Pequeñuelos:</strong> v0.4.0 (Juego de Lógica)</p>
       <p style="font-size: 0.88rem; color: var(--secondary);">Desarrollados para funcionar sin necesidad de conexión a internet en escuelas técnicas.</p>
     </div>
@@ -1151,7 +1159,7 @@
       const downloadsElem = document.getElementById('downloadsCount');
       if (!downloadsElem) return;
       try {
-        const response = await fetch('https://api.github.com/repos/jordanjose562-cmyk/jhf-blocks-web/releases');
+        const response = await fetch('https://api.github.com/repos/EDUTECJHf/jhf-blocks-web/releases');
         if (!response.ok) throw new Error('API Error');
         
         const releases = await response.json();
