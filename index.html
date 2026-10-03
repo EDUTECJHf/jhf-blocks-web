@@ -31,15 +31,16 @@
       --dark: #212529;
       --light: #f8f9fa;
       --white: #ffffff;
-      --border: #e9ecef;
-      --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      --border: #e2e8f0;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 
-      /* Identidad Cuidado Pequeñuelos */
-      --cp-neon: #39FF14;
-      --cp-red: #FF1744;
-      --cp-blue: #1E88E5;
-      --cp-gold: #FFD700;
-      --cp-dark-bg: #0f172a;
+      /* Identidad Cuidado Pequeñuelos (Paleta Clara) */
+      --cp-bg: #f0fdf4; /* Verde menta extremadamente suave */
+      --cp-accent: #10b981; /* Verde neón suave para contraste claro */
+      --cp-red: #ef4444;
+      --cp-blue: #1e88e5;
+      --cp-gold: #d97706;
+      --cp-card-bg: #ffffff;
     }
 
     * {
@@ -120,7 +121,7 @@
     }
 
     .btn-nav-cp {
-      color: var(--cp-blue) !important;
+      color: #059669 !important;
       font-weight: 700 !important;
     }
 
@@ -140,9 +141,9 @@
       color: var(--white);
     }
 
-    /* HERO GENERAL EDUTEC JHF */
+    /* HERO GENERAL EDUTEC JHF (CLARO / AZUL INSTITUCIONAL) */
     .hero-edutec {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      background: linear-gradient(135deg, #0d6efd 0%, #0a47a1 100%);
       color: var(--white);
       padding: 50px 0 60px 0;
       text-align: center;
@@ -158,7 +159,7 @@
       font-size: 1.15rem;
       max-width: 750px;
       margin: 0 auto 35px auto;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .program-cards-selector {
@@ -169,25 +170,27 @@
     }
 
     .selector-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 12px;
       padding: 22px;
       width: 320px;
       text-align: left;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s, background-color 0.2s;
     }
 
     .selector-card:hover {
       transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.22);
     }
 
     .selector-card.jhf {
-      border-top: 4px solid var(--primary);
+      border-top: 4px solid var(--white);
     }
 
     .selector-card.cp {
-      border-top: 4px solid var(--cp-neon);
+      border-top: 4px solid #34d399;
     }
 
     .selector-card h3 {
@@ -196,11 +199,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      color: var(--white);
     }
 
     .selector-card p {
       font-size: 0.9rem;
-      opacity: 0.85;
+      opacity: 0.9;
       margin-bottom: 18px;
       min-height: 55px;
     }
@@ -216,13 +220,13 @@
     }
 
     .btn-select.jhf {
-      background-color: var(--primary);
-      color: var(--white);
+      background-color: var(--white);
+      color: var(--primary);
     }
 
     .btn-select.cp {
-      background-color: var(--cp-neon);
-      color: #000;
+      background-color: #34d399;
+      color: #064e3b;
     }
 
     /* SECCION JHF BLOCKS */
@@ -248,9 +252,9 @@
     }
 
     .brand-badge.cp {
-      background-color: #0f172a;
-      color: var(--cp-neon);
-      border: 1px solid var(--cp-neon);
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
     }
 
     .downloads-container {
@@ -270,7 +274,7 @@
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       transition: transform 0.2s, box-shadow 0.2s;
       flex-direction: column;
       text-align: left;
@@ -278,7 +282,7 @@
 
     .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.18);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
 
     .btn-installer-64 { background-color: #198754; color: var(--white); }
@@ -326,12 +330,6 @@
       text-align: left;
     }
 
-    .aviso-defender.dark-theme {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.2);
-      color: #e2e8f0;
-    }
-
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -363,12 +361,13 @@
       font-weight: 500;
     }
 
-    /* SECCIÓN CUIDADO PEQUEÑUELOS */
+    /* SECCIÓN CUIDADO PEQUEÑUELOS (FONDO LUMINOSO) */
     .section-cp {
       padding: 70px 0;
-      background-color: var(--cp-dark-bg);
-      color: var(--white);
-      border-top: 3px solid var(--cp-neon);
+      background-color: var(--cp-bg);
+      color: var(--dark);
+      border-top: 3px solid #10b981;
+      border-bottom: 1px solid var(--border);
     }
 
     .cp-header {
@@ -378,12 +377,12 @@
 
     .cp-header h2 {
       font-size: 2.3rem;
-      color: var(--white);
+      color: var(--dark);
       margin: 8px 0;
     }
 
     .cp-header h2 span {
-      color: var(--cp-neon);
+      color: #059669;
     }
 
     .cp-intro-grid {
@@ -399,10 +398,11 @@
     }
 
     .kalvin-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      border: 1px solid #a7f3d0;
       border-radius: 12px;
       padding: 25px;
+      box-shadow: var(--shadow);
     }
 
     .kalvin-avatar {
@@ -426,10 +426,10 @@
     }
 
     .cp-features-list i {
-      color: var(--cp-neon);
+      color: #059669;
     }
 
-    /* GALERÍA ESPECÍFICA CUIDADO PEQUEÑUELOS */
+    /* GALERÍA CLARA CUIDADO PEQUEÑUELOS */
     .cp-gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -438,16 +438,17 @@
     }
 
     .cp-gallery-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
+      box-shadow: var(--shadow);
       transition: transform 0.2s, border-color 0.2s;
     }
 
     .cp-gallery-item:hover {
       transform: translateY(-4px);
-      border-color: var(--cp-neon);
+      border-color: #10b981;
     }
 
     .cp-gallery-item img {
@@ -455,15 +456,16 @@
       height: 180px;
       object-fit: cover;
       display: block;
-      background: #000;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
     }
 
     .cp-gallery-caption {
       padding: 12px 15px;
       font-size: 0.88rem;
       text-align: center;
-      color: #e2e8f0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--dark);
+      font-weight: 500;
     }
 
     /* TROFEOS Y PEDAGOGÍA */
@@ -475,11 +477,12 @@
     }
 
     .trofeo-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 10px;
       padding: 20px;
       text-align: center;
+      box-shadow: var(--shadow);
     }
 
     .trofeo-icon {
@@ -489,25 +492,27 @@
 
     .trofeo-card.resuelto .trofeo-icon { color: var(--cp-gold); }
     .trofeo-card.caminos .trofeo-icon { color: var(--cp-blue); }
-    .trofeo-card.eficiente .trofeo-icon { color: var(--cp-neon); }
+    .trofeo-card.eficiente .trofeo-icon { color: #059669; }
 
     .trofeo-card h4 {
       font-size: 1.1rem;
       margin-bottom: 6px;
+      color: var(--dark);
     }
 
     .trofeo-card p {
       font-size: 0.88rem;
-      opacity: 0.8;
+      color: var(--secondary);
     }
 
     /* CATEGORÍAS CUIDADO PEQUEÑUELOS */
     .niveles-container {
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--white);
       border-radius: 12px;
       padding: 25px;
       margin-bottom: 45px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .niveles-grid {
@@ -518,10 +523,13 @@
     }
 
     .nivel-box {
-      background: rgba(255, 255, 255, 0.05);
+      background: #f8fafc;
       padding: 18px;
       border-radius: 8px;
       border-left: 4px solid var(--cp-blue);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     .nivel-box.int { border-left-color: var(--cp-gold); }
@@ -530,16 +538,17 @@
     .nivel-box h5 {
       font-size: 1rem;
       margin-bottom: 5px;
+      color: var(--dark);
     }
 
     .nivel-box p {
       font-size: 0.85rem;
-      opacity: 0.8;
+      color: var(--secondary);
     }
 
     .btn-download-cp {
-      background-color: var(--cp-neon);
-      color: #000;
+      background-color: #10b981;
+      color: var(--white);
       padding: 14px 24px;
       border-radius: 10px;
       font-weight: 900;
@@ -547,23 +556,25 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
       transition: all 0.2s;
     }
 
     .btn-download-cp:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(57, 255, 20, 0.45);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+      background-color: #059669;
     }
 
     .btn-download-cp.blue {
       background-color: var(--cp-blue);
       color: #fff;
-      box-shadow: 0 0 15px rgba(30, 136, 229, 0.25);
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.25);
     }
 
     .btn-download-cp.blue:hover {
-      box-shadow: 0 0 25px rgba(30, 136, 229, 0.45);
+      box-shadow: 0 6px 18px rgba(30, 136, 229, 0.35);
+      background-color: #1565c0;
     }
 
     /* SECCION DESAFIOS ONLINE */
@@ -806,14 +817,14 @@
       <div class="program-cards-selector">
         <!-- Tarjeta JHF Blocks -->
         <div class="selector-card jhf">
-          <h3><i class="fas fa-cubes" style="color: var(--primary);"></i> JHF Blocks</h3>
+          <h3><i class="fas fa-cubes"></i> JHF Blocks</h3>
           <p>Programación por bloques pensada para controlar placas Arduino reales y sensores.</p>
           <a href="#jhf-blocks" class="btn-select jhf">Ver JHF Blocks</a>
         </div>
 
         <!-- Tarjeta Cuidado Pequeñuelos -->
         <div class="selector-card cp">
-          <h3><i class="fas fa-robot" style="color: var(--cp-neon);"></i> Cuidado Pequeñuelos</h3>
+          <h3><i class="fas fa-robot"></i> Cuidado Pequeñuelos</h3>
           <p>Juego de lógica y pensamiento computacional en pantalla. Paso previo a la robótica.</p>
           <a href="#cuidado-pequenuelos" class="btn-select cp">Ver Cuidado Pequeñuelos</a>
         </div>
@@ -896,13 +907,13 @@
       <div class="cp-header">
         <span class="brand-badge cp">Pensamiento Computacional</span>
         <h2>Cuidado <span>Pequeñuelos</span></h2>
-        <p style="opacity: 0.9;">El juego de desafíos lógicos en pantalla para el Ciclo Básico (12-13 años)</p>
+        <p style="color: var(--secondary);">El juego de desafíos lógicos en pantalla para el Ciclo Básico (12-13 años)</p>
       </div>
 
       <div class="cp-intro-grid">
         <div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--cp-neon);">¿Qué es Cuidado Pequeñuelos?</h3>
-          <p style="margin-bottom: 15px; opacity: 0.9;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: #059669;">¿Qué es Cuidado Pequeñuelos?</h3>
+          <p style="margin-bottom: 15px; color: #334155;">
             Es un programa de escritorio diseñado para enseñar lógica de programación sin necesidad de conectar placas o motores. Implementado y probado en aula en la <strong>EEST N°1</strong>. Funciona como el paso previo ideal antes de pasar a la robótica con Arduino.
           </p>
           <ul class="cp-features-list">
@@ -917,15 +928,15 @@
             <i class="fas fa-robot"></i>
           </div>
           <h4 style="text-align: center; font-size: 1.2rem; margin-bottom: 8px;">Diseñado para el Aula</h4>
-          <p style="font-size: 0.9rem; opacity: 0.85; text-align: center;">
+          <p style="font-size: 0.9rem; color: var(--secondary); text-align: center;">
             Pensado para computadoras compartidas. Cada estudiante ingresa con su nombre y curso, guardando sus progresos y logros de forma individual.
           </p>
         </div>
       </div>
 
       <!-- GALERÍA DE CAPTURAS DE PANTALLA DE CUIDADO PEQUEÑUELOS -->
-      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px; color: var(--cp-neon);">Módulos e Interfaz del Juego</h3>
-      <p style="text-align: center; opacity: 0.85; max-width: 650px; margin: 0 auto 20px auto; font-size: 0.95rem;">
+      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px; color: #059669;">Módulos e Interfaz del Juego</h3>
+      <p style="text-align: center; color: var(--secondary); max-width: 650px; margin: 0 auto 20px auto; font-size: 0.95rem;">
         Conocé las pantallas principales, el sistema de perfiles y el entorno de bloques de Cuidado Pequeñuelos:
       </p>
 
@@ -972,8 +983,8 @@
       </div>
 
       <!-- IDEA PEDAGÓGICA Y TROFEOS -->
-      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px;">Idea Pedagógica: Trofeos por Nivel</h3>
-      <p style="text-align: center; opacity: 0.85; max-width: 650px; margin: 0 auto 25px auto; font-size: 0.95rem;">
+      <h3 style="text-align: center; font-size: 1.5rem; margin-bottom: 10px; color: var(--dark);">Idea Pedagógica: Trofeos por Nivel</h3>
+      <p style="text-align: center; color: var(--secondary); max-width: 650px; margin: 0 auto 25px auto; font-size: 0.95rem;">
         En programación, un problema tiene múltiples soluciones. El juego premia la curiosidad y la optimización con 3 reconocimientos:
       </p>
 
@@ -999,8 +1010,8 @@
 
       <!-- NIVELES Y CONTENIDO -->
       <div class="niveles-container">
-        <h4 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--cp-neon);"><i class="fas fa-layer-group"></i> 90 Desafíos Verificados</h4>
-        <p style="font-size: 0.9rem; opacity: 0.85;">Organizados en 3 categorías progresivas con tutoriales guía:</p>
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px; color: #059669;"><i class="fas fa-layer-group"></i> 90 Desafíos Verificados</h4>
+        <p style="font-size: 0.9rem; color: var(--secondary);">Organizados en 3 categorías progresivas con tutoriales guía:</p>
 
         <div class="niveles-grid">
           <div class="nivel-box">
@@ -1020,8 +1031,8 @@
 
       <!-- FUNCIONES PARA EL AULA & DESCARGA -->
       <div style="text-align: center; margin-top: 40px;">
-        <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Descargar Cuidado Pequeñuelos v0.4.0</h3>
-        <p style="font-size: 0.95rem; opacity: 0.85; margin-bottom: 25px;">Seleccioná la versión adecuada para las computadoras de tu escuela | Funcionamiento 100% Offline</p>
+        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Descargar Cuidado Pequeñuelos v0.4.0</h3>
+        <p style="font-size: 0.95rem; color: var(--secondary); margin-bottom: 25px;">Seleccioná la versión adecuada para las computadoras de tu escuela | Funcionamiento 100% Offline</p>
 
         <!-- BOTONES DE DESCARGA PEQUEÑUELOS -->
         <div class="downloads-container">
@@ -1031,7 +1042,7 @@
             <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
             <span style="text-align: left;">
               <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Windows 64-bits</span>
-              <span style="display: block; font-size: 0.8rem; font-weight: 500; opacity: 0.9;">Instalador para Win 10 / 11 (~ 114 MB)</span>
+              <span style="display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Instalador para Win 10 / 11 (~ 114 MB)</span>
             </span>
           </a>
 
@@ -1041,14 +1052,14 @@
             <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
             <span style="text-align: left;">
               <span style="display: block; font-size: 1.1rem; font-weight: 900;">Descargar Windows 32-bits</span>
-              <span style="display: block; font-size: 0.8rem; font-weight: 500; opacity: 0.9;">Compatible con Windows 7 / 32-bits</span>
+              <span style="display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Compatible con Windows 7 / 32-bits</span>
             </span>
           </a>
         </div>
 
         <!-- Aviso Defender Cuidado Pequeñuelos -->
-        <div class="aviso-defender dark-theme" style="margin-top: 25px;">
-          <i class="fas fa-shield-halved" style="color: var(--cp-neon);"></i>
+        <div class="aviso-defender" style="margin-top: 25px;">
+          <i class="fas fa-shield-halved"></i>
           <strong>Aviso de seguridad de Windows:</strong> Como el instalador no posee firma digital paga, Windows SmartScreen mostrará un mensaje indicando "Windows protegió su PC". Podés continuar con total seguridad haciendo clic en <strong>Más información</strong> y luego en <strong>Ejecutar de todas formas</strong>.
         </div>
       </div>
