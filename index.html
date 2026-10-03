@@ -439,19 +439,46 @@
       .cp-intro-grid { grid-template-columns: 1fr; }
     }
 
-    .kalvin-card {
-      background: var(--white);
-      border: 2px solid var(--cp-blue-fluor);
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: var(--shadow);
+    /* MOCKUP DISPOSITIVO MÓVIL (TABLET / CELULAR) */
+    .mobile-mockup-card {
+      background: #1e293b;
+      border: 4px solid #334155;
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
     }
 
-    .kalvin-avatar {
-      font-size: 3rem;
-      color: var(--cp-blue-fluor);
+    .mobile-screen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      padding: 0 8px 8px 8px;
+    }
+
+    .mobile-screen-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #475569;
+    }
+
+    .mobile-screen-frame img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mobile-screen-footer {
       text-align: center;
-      margin-bottom: 15px;
+      color: #f1f5f9;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding-top: 8px;
     }
 
     .cp-features-list {
@@ -982,23 +1009,27 @@
         <div>
           <h3 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--cp-blue-fluor);">¿Qué es Cuidado Pequeñuelos?</h3>
           <p style="margin-bottom: 15px; color: #334155;">
-            Es un programa de escritorio diseñado para enseñar lógica de programación sin necesidad de conectar placas o motores. Funciona como el paso previo ideal antes de pasar a la robótica con Arduino.
+            Es un programa educativo diseñado para enseñar lógica de programación sin necesidad de conectar placas o motores. Funciona como el paso previo ideal antes de pasar a la robótica con Arduino.
           </p>
           <ul class="cp-features-list">
             <li><i class="fas fa-check-circle"></i> <strong>Protagonista:</strong> Ayudá al robot Kalvin a juntar baterías y engranajes.</li>
             <li><i class="fas fa-check-circle"></i> <strong>Expresivo:</strong> Kalvin reacciona con caras a lo que sucede en el mapa.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Acompañamiento docente:</strong> 100% offline, con perfiles independientes por alumno.</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Multiplataforma:</strong> Disponible para computadoras, netbooks, tablets y celulares (Android).</li>
           </ul>
         </div>
 
-        <div class="kalvin-card">
-          <div class="kalvin-avatar">
-            <i class="fas fa-robot"></i>
+        <!-- MOCKUP CELULAR / TABLET CON EL NIVEL INICIAL DE PRESENTACIÓN -->
+        <div class="mobile-mockup-card">
+          <div class="mobile-screen-header">
+            <span><i class="fas fa-signal"></i> EduTec JHF</span>
+            <span><i class="fas fa-battery-full"></i> 100%</span>
           </div>
-          <h4 style="text-align: center; font-size: 1.2rem; margin-bottom: 8px;">Diseñado para el Aula</h4>
-          <p style="font-size: 0.9rem; color: var(--secondary); text-align: center;">
-            Pensado para computadoras y celulares compartidos. Cada estudiante ingresa con su nombre y curso, guardando sus progresos y logros de forma individual.
-          </p>
+          <div class="mobile-screen-frame">
+            <img src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Cuidado Pequeñuelos corriendo en Celular y Tablet">
+          </div>
+          <div class="mobile-screen-footer">
+            <i class="fab fa-android" style="color: var(--cp-green-fluor);"></i> Cuidado Pequeñuelos v0.6.0 en Tablet / Móvil
+          </div>
         </div>
       </div>
 
