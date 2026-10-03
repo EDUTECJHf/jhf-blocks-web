@@ -39,6 +39,7 @@
       --cp-green-fluor: #00E676; /* Verde Flúor */
       --cp-blue-fluor: #00B0FF;  /* Azul Flúor */
       --cp-orange-fluor: #FF6D00;/* Naranja Flúor */
+      --cp-purple-fluor: #9C27B0;/* Violeta/Púrpura Flúor para Extra */
       --cp-gold: #d97706;
     }
 
@@ -360,7 +361,7 @@
       font-weight: 500;
     }
 
-    /* SECCIÓN CUIDADO PEQUEÑUELOS (PALETA FLÚOR) */
+    /* SECCIÓN CUIDADO PEQUEÑUELOS */
     .section-cp {
       padding: 70px 0;
       background-color: var(--cp-bg);
@@ -454,10 +455,11 @@
     .cp-gallery-item img {
       width: 100%;
       height: 180px;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
-      background: #f8fafc;
+      background: #ffffff;
       border-bottom: 1px solid var(--border);
+      padding: 5px;
     }
 
     .cp-gallery-caption {
@@ -505,7 +507,7 @@
       color: var(--secondary);
     }
 
-    /* CATEGORÍAS CUIDADO PEQUEÑUELOS */
+    /* CATEGORÍAS CUIDADO PEQUEÑUELOS (110 NIVELES) */
     .niveles-container {
       background: var(--white);
       border-radius: 12px;
@@ -517,8 +519,8 @@
 
     .niveles-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
       margin-top: 20px;
     }
 
@@ -534,6 +536,7 @@
 
     .nivel-box.int { border-left-color: var(--cp-gold); }
     .nivel-box.ava { border-left-color: var(--cp-orange-fluor); }
+    .nivel-box.ext { border-left-color: var(--cp-purple-fluor); }
 
     .nivel-box h5 {
       font-size: 1rem;
@@ -1026,10 +1029,10 @@
         </div>
       </div>
 
-      <!-- NIVELES Y CONTENIDO -->
+      <!-- NIVELES Y CONTENIDO (110 NIVELES EN TOTAL) -->
       <div class="niveles-container">
-        <h4 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--cp-blue-fluor);"><i class="fas fa-layer-group"></i> 90 Desafíos Verificados</h4>
-        <p style="font-size: 0.9rem; color: var(--secondary);">Organizados en 3 categorías progresivas con tutoriales guía:</p>
+        <h4 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--cp-blue-fluor);"><i class="fas fa-layer-group"></i> 110 Desafíos Verificados</h4>
+        <p style="font-size: 0.9rem; color: var(--secondary);">Organizados en 4 categorías progresivas con tutoriales guía:</p>
 
         <div class="niveles-grid">
           <div class="nivel-box">
@@ -1043,6 +1046,10 @@
           <div class="nivel-box ava">
             <h5>Avanzado</h5>
             <p>30 niveles con mapas amplios y búsqueda de patrones.</p>
+          </div>
+          <div class="nivel-box ext">
+            <h5>Escenario Extra</h5>
+            <p>20 niveles especiales de práctica intensiva y lógica superior.</p>
           </div>
         </div>
       </div>
