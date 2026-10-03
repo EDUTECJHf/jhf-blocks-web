@@ -299,6 +299,71 @@
       border: 1px solid #7DD3FC;
     }
 
+    /* MOCKUP NOTEBOOK / LAPTOP PARA JHF BLOCKS */
+    .notebook-mockup-container {
+      max-width: 800px;
+      margin: 35px auto 30px auto;
+      background: #1e293b;
+      border-radius: 16px 16px 4px 4px;
+      padding: 12px 12px 0 12px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.18);
+      border: 2px solid #334155;
+    }
+
+    .notebook-top-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+    }
+
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background-color: #ef4444; }
+    .dot-yellow { background-color: #f59e0b; }
+    .dot-green { background-color: #10b981; }
+
+    .notebook-screen {
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #475569;
+    }
+
+    .notebook-screen img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      display: block;
+      background: #f8fafc;
+    }
+
+    .notebook-base {
+      height: 16px;
+      background: linear-gradient(to bottom, #94a3b8, #64748b);
+      border-radius: 0 0 16px 16px;
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .notebook-base::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: #475569;
+      border-radius: 0 0 4px 4px;
+    }
+
     .downloads-container {
       display: flex;
       justify-content: center;
@@ -930,11 +995,25 @@
   <!-- SECCIÓN 1: JHF BLOCKS -->
   <section id="jhf-blocks" class="section-jhf">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 30px;">
+      <div style="text-align: center; margin-bottom: 20px;">
         <span class="brand-badge jhf">Hardware & Robótica</span>
         <h2 style="font-size: 2.2rem; color: var(--primary);">JHF Blocks</h2>
         <p style="color: var(--secondary);">Entorno de programación por bloques para Arduino y electrónica educativa</p>
       </div>
+
+      <!-- MOCKUP NOTEBOOK / LAPTOP CON CAPTURA_NOTEBOOK.PNG -->
+      <div class="notebook-mockup-container">
+        <div class="notebook-top-bar">
+          <div class="window-dot dot-red"></div>
+          <div class="window-dot dot-yellow"></div>
+          <div class="window-dot dot-green"></div>
+          <span style="color: #94a3b8; font-size: 0.8rem; margin-left: 10px; font-weight: 500;"><i class="fas fa-laptop"></i> JHF Blocks v1.12.0 — Entorno de Programación en Notebook</span>
+        </div>
+        <div class="notebook-screen">
+          <img src="captura_notebook.png" alt="JHF Blocks corriendo en Notebook escolar">
+        </div>
+      </div>
+      <div class="notebook-base"></div>
 
       <div class="downloads-container">
         <!-- Windows 64-bits -->
@@ -948,7 +1027,7 @@
         <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/JHF-Blocks-Instalador-Win7-32bits-1.12.0.exe" 
            class="btn-download btn-installer-32" id="installer32Btn" download>
           <span><i class="fab fa-windows"></i> Windows 7 / 32-bits (v1.12.0)</span>
-          <span class="peso-archivo">Sistemas de 32 bits</span>
+          <span class="peso-archivo">Sistemas de 32 bits / Netbooks</span>
         </a>
 
         <!-- APK Android -->
@@ -1137,7 +1216,7 @@
         <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Descargar Cuidado Pequeñuelos v0.6.0</h3>
         <p style="font-size: 0.95rem; color: var(--secondary); margin-bottom: 25px;">Seleccioná la opción adecuada para las computadoras o dispositivos de tu escuela | Funcionamiento 100% Offline</p>
 
-        <!-- BOTONES DE DESCARGA PEQUEÑUELOS (TEXTO DE NETBOOKS EN 32 BITS) -->
+        <!-- BOTONES DE DESCARGA PEQUEÑUELOS -->
         <div class="downloads-container">
           <!-- Windows 64-bits v0.6.0 -->
           <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-0.6.0.exe" 
@@ -1149,7 +1228,7 @@
             </span>
           </a>
 
-          <!-- Windows 32-bits v0.6.0 -->
+          <!-- Windows 32-bits v0.6.0 (NETBOOKS DE CONECTAR IGUALDAD) -->
           <a href="https://github.com/EDUTECJHf/jhf-blocks-web/releases/download/v1.5.2/CuidadoPequenuelos-Instalador-Win7-32bits-0.6.0.exe" 
              class="btn-download-cp win32" download>
             <i class="fab fa-windows" style="font-size: 1.6rem;"></i>
@@ -1295,14 +1374,14 @@
         <div class="team-grid">
           <div class="team-card">
             <div class="team-icon"><i class="fas fa-microchip"></i></div>
-            <h4>Hormachea Germán</h4>
+            <h4>Germán Hormachea</h4>
             <span style="color: var(--primary); font-weight: 600; font-size: 0.88rem; display: block; margin-bottom: 8px;">Docente Técnico Superior en Electrónica</span>
             <p style="font-size: 0.88rem; color: var(--secondary);">Desarrollo técnico, pruebas de hardware, diseño de lógica y optimización de plataformas.</p>
           </div>
 
           <div class="team-card">
             <div class="team-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-            <h4>Christopher Farfan</h4>
+            <h4>Cristofer Farfán</h4>
             <span style="color: var(--primary); font-weight: 600; font-size: 0.88rem; display: block; margin-bottom: 8px;">Lic. en Educación & Técnico Electromecánico</span>
             <p style="font-size: 0.88rem; color: var(--secondary);">Articulación pedagógica, diseño curricular técnico y propuestas lúdico-educativas.</p>
           </div>
