@@ -122,6 +122,8 @@
       font-size: 1.6rem;
       color: var(--dark);
       cursor: pointer;
+      padding: 8px;
+      line-height: 0;
     }
 
     .nav-links {
@@ -994,6 +996,67 @@
       color: #495057;
     }
 
+    /* FORMULARIO DE INSTITUCIONES */
+    .contanos-section {
+      padding: 50px 0;
+      background: linear-gradient(135deg, #0d6efd 0%, #0a47a1 100%);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contanos-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .contanos-section p {
+      max-width: 640px;
+      margin: 0 auto 20px auto;
+      opacity: 0.95;
+    }
+
+    .btn-contanos {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 1.05rem;
+      transition: all 0.2s;
+    }
+
+    .btn-contanos:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .contanos-nota {
+      font-size: 0.82rem;
+      opacity: 0.85;
+      margin-top: 14px !important;
+      margin-bottom: 0 !important;
+    }
+
+    .aviso-contanos {
+      max-width: 720px;
+      margin: 18px auto 0 auto;
+      background: #e7f1ff;
+      border: 1px solid #b6d4fe;
+      color: #084298;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    .aviso-contanos a {
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
     /* SECCIÓN TUTORIALES */
     .tutoriales-section {
       padding: 60px 0;
@@ -1403,7 +1466,7 @@
           <span>EduTec JHF</span>
         </div>
         <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menú">
-          <i class="fas fa-bars"></i>
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" style="display: block;"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
         </button>
         <ul class="nav-links" id="navLinks">
           <li><a href="#jhf-blocks">JHF Blocks</a></li>
@@ -1505,6 +1568,7 @@
 
       <!-- Métricas -->
       <div class="metrics-bar">
+        <span id="visitasCaja" title="Visitas reales a la página, contadas desde octubre de 2026"><i class="fas fa-eye"></i> Visitas: <strong id="visitsCount">...</strong></span>
         <span><i class="fas fa-file-download"></i> Descargas totales: <strong id="downloadsCount">...</strong></span>
       </div>
 
@@ -1886,6 +1950,16 @@
     </div>
   </section>
 
+  <!-- SECCIÓN: FORMULARIO DE INSTITUCIONES (oculta hasta cargar el enlace en FORMULARIO_URL) -->
+  <section id="contanos" class="contanos-section" hidden>
+    <div class="container">
+      <h2><i class="fas fa-school"></i> ¿En qué escuela lo vas a usar?</h2>
+      <p>Si descargaste o vas a usar JHF Blocks o Cuidado Pequeñuelos, contanos en qué institución. Nos ayuda a saber a dónde llegan los programas y a seguir mejorándolos.</p>
+      <a href="#" id="btnContanos" target="_blank" rel="noopener" class="btn-contanos"><i class="fas fa-pen-to-square"></i> Completar el formulario (2 minutos)</a>
+      <p class="contanos-nota">Es opcional. No se piden datos de alumnos y la información no se comparte con terceros.</p>
+    </div>
+  </section>
+
   <!-- SECCIÓN: NOVEDADES -->
   <section id="novedades" class="novedades-section">
     <div class="container">
@@ -2035,6 +2109,32 @@
 
     // Contadores
 
+    // Visitas reales: las guarda un servicio gratuito (Abacus). Cuenta una visita por navegador y por día;
+    // si alguien recarga la página varias veces el mismo día, solo lee el número sin sumar.
+    // Si el servicio no responde, el contador se oculta en vez de mostrar un número inventado.
+    async function contarVisita() {
+      const caja = document.getElementById('visitasCaja');
+      const numero = document.getElementById('visitsCount');
+      if (!caja || !numero) return;
+      const servicio = 'https://abacus.jasoncameron.dev';
+      const clave = 'edutecjhf/jhf-blocks-web';
+      const f = new Date();
+      const hoy = f.getFullYear() + '-' + (f.getMonth() + 1) + '-' + f.getDate();
+      let yaContada = false;
+      try { yaContada = localStorage.getItem('jhf_visita_dia') === hoy; } catch (e) {}
+      try {
+        const respuesta = await fetch(servicio + (yaContada ? '/get/' : '/hit/') + clave);
+        if (!respuesta.ok) throw new Error('sin contador');
+        const datos = await respuesta.json();
+        numero.textContent = Number(datos.value).toLocaleString('es-AR');
+        try { localStorage.setItem('jhf_visita_dia', hoy); } catch (e) {}
+      } catch (error) {
+        caja.style.display = 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', contarVisita);
+
     async function obtenerDescargasReales() {
       const downloadsElem = document.getElementById('downloadsCount');
       if (!downloadsElem) return;
@@ -2060,6 +2160,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', obtenerDescargasReales);
+
+    // ---------- FORMULARIO DE INSTITUCIONES ----------
+    // Pegá entre las comillas el enlace del formulario de Google (el que empieza con https://forms.gle/ o https://docs.google.com/forms/).
+    // Mientras esté vacío, la sección y los avisos del formulario no se muestran.
+    const FORMULARIO_URL = 'https://forms.gle/hmas9MXkEFLo2Zqb9';
+
+    (function () {
+      if (!FORMULARIO_URL) return;
+      const seccion = document.getElementById('contanos');
+      const boton = document.getElementById('btnContanos');
+      if (seccion && boton) { boton.href = FORMULARIO_URL; seccion.hidden = false; }
+
+      // Después de tocar una descarga, aparece un aviso debajo de esos botones (no frena la descarga)
+      document.querySelectorAll('.downloads-container').forEach((contenedor) => {
+        contenedor.querySelectorAll('a[href*="/releases/download/"]').forEach((enlace) => {
+          enlace.addEventListener('click', () => {
+            if (contenedor.nextElementSibling && contenedor.nextElementSibling.classList.contains('aviso-contanos')) return;
+            const aviso = document.createElement('div');
+            aviso.className = 'aviso-contanos';
+            aviso.innerHTML = '<i class="fas fa-school"></i> ¡Gracias por descargar! ¿Nos contás en qué escuela lo vas a usar? '
+              + '<a href="' + FORMULARIO_URL + '" target="_blank" rel="noopener">Completar el formulario</a> (2 minutos, opcional).';
+            contenedor.insertAdjacentElement('afterend', aviso);
+          });
+        });
+      });
+    })();
 
     // ---------- TUTORIALES ----------
     // Para sumar una clase: agregá un bloque más en "clases" con su título, su video (sin la extensión) y sus pasos.
