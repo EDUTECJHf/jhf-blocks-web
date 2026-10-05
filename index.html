@@ -783,6 +783,128 @@
       background-color: rgba(255, 255, 255, 0.18);
     }
 
+    /* GUÍA DOCENTE, VIDEO, REQUISITOS Y NOVEDADES */
+    .cta-cp-fila {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin: 22px 0 6px;
+    }
+
+    .btn-guia-cp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      color: #5e35b1;
+      border: 2px solid #7c4dff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+
+    .btn-guia-cp:hover {
+      transform: translateY(-2px);
+      background-color: #f3eeff;
+      box-shadow: 0 6px 18px rgba(124, 77, 255, 0.25);
+    }
+
+    .btn-guia-cp small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .video-cp-box {
+      max-width: 860px;
+      margin: 10px auto 50px auto;
+      text-align: center;
+    }
+
+    .video-cp {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      background: #0f3460;
+    }
+
+    .requisitos-cp {
+      max-width: 720px;
+      margin: 18px auto 0 auto;
+      background: #f1f6ff;
+      border: 1px solid #c9dcff;
+      color: #334155;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .requisitos-cp ul {
+      margin: 8px 0 0 18px;
+      padding: 0;
+      list-style: disc;
+    }
+
+    .requisitos-cp li {
+      margin-bottom: 3px;
+    }
+
+    .novedades-section {
+      padding: 60px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .novedades-lista {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .novedad {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    .novedad.cp {
+      border-left-color: var(--cp-orange-fluor);
+    }
+
+    .novedad-fecha {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 2px;
+    }
+
+    .novedad h4 {
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .novedad p {
+      font-size: 0.92rem;
+      color: #495057;
+    }
+
     /* SECCION DESAFIOS ONLINE */
     .desafios-section {
       padding: 60px 0;
@@ -1012,6 +1134,7 @@
           <li><a href="#cuidado-pequenuelos" class="btn-nav-cp"><i class="fas fa-gamepad"></i> Cuidado Pequeñuelos</a></li>
           <li><a href="#desafios">Desafíos Web</a></li>
           <li><a href="#robots-stl">STL 3D</a></li>
+          <li><a href="#novedades">Novedades</a></li>
           <li><a href="#quienes-somos">Nosotros</a></li>
           <li><button class="btn-about" id="openModalBtn"><i class="fas fa-info-circle"></i> Info</button></li>
         </ul>
@@ -1099,8 +1222,7 @@
 
       <!-- Métricas -->
       <div class="metrics-bar">
-        <span><i class="fas fa-eye"></i> Visitas: <strong id="visitsCount">...</strong></span>
-        <span><i class="fas fa-file-download"></i> Descargas: <strong id="downloadsCount">...</strong></span>
+        <span><i class="fas fa-file-download"></i> Descargas totales: <strong id="downloadsCount">...</strong></span>
       </div>
 
       <!-- Aviso SmartScreen JHF -->
@@ -1135,13 +1257,20 @@
         <h2>Cuidado <span>Pequeñuelos</span></h2>
         <p style="color: var(--secondary);">El juego de desafíos lógicos en pantalla desde 2.º ciclo de primaria hasta secundaria (10 a 14 años)</p>
 
-        <!-- JUGAR ONLINE: abre el juego en el navegador, sin instalar -->
-        <div class="online-cp-box">
+        <!-- JUGAR ONLINE Y GUÍA PARA DOCENTES -->
+        <div class="cta-cp-fila">
           <a href="cuidado-pequenuelos/" target="_blank" rel="noopener" class="btn-online-cp">
             <i class="fas fa-play" style="font-size: 1.4rem;"></i>
             <span style="text-align: left;">
               Jugar online ahora
               <small>En el navegador, sin instalar nada</small>
+            </span>
+          </a>
+          <a href="guia-docente-cuidado-pequenuelos.pdf" target="_blank" rel="noopener" class="btn-guia-cp">
+            <i class="fas fa-file-pdf" style="font-size: 1.4rem;"></i>
+            <span style="text-align: left;">
+              Guía para docentes
+              <small>PDF de 5 páginas, con secuencia de clases</small>
             </span>
           </a>
         </div>
@@ -1173,6 +1302,19 @@
             <i class="fab fa-android" style="color: var(--cp-green-fluor);"></i> Cuidado Pequeñuelos v0.6.0 en Tablet / Móvil
           </div>
         </div>
+      </div>
+
+      <!-- VIDEO: EL JUEGO EN ACCIÓN -->
+      <div class="video-cp-box">
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--cp-orange-fluor);">Mirá el juego en acción</h3>
+        <p style="color: var(--secondary); max-width: 650px; margin: 0 auto 20px auto; font-size: 0.95rem;">
+          Nivel 1 de Extras: en el primer intento la barrera láser frena a Kalvin; en el segundo, con el bloque Esperar, pasa en el momento justo.
+        </p>
+        <video id="videoCp" class="video-cp" controls muted loop playsinline preload="none"
+               poster="video-cuidado-pequenuelos.jpg" width="960" height="594">
+          <source src="video-cuidado-pequenuelos.mp4" type="video/mp4">
+          Tu navegador no puede mostrar el video.
+        </video>
       </div>
 
       <!-- GALERÍA DE CAPTURAS DE PANTALLA DE CUIDADO PEQUEÑUELOS -->
@@ -1245,7 +1387,7 @@
         <div class="trofeo-card eficiente">
           <div class="trofeo-icon"><i class="fas fa-bolt"></i></div>
           <h4>⚡ Eficiente</h4>
-          <p>Encontró la solución usando la menor cantidad de bloques (o usando bucles "Repetir").</p>
+          <p>Resolvió el nivel con la cantidad de bloques que pide el desafío extra, o menos. El bloque "Repetir" ayuda a lograrlo.</p>
         </div>
       </div>
 
@@ -1329,6 +1471,19 @@
           <i class="fas fa-shield-halved"></i>
           <strong>Aviso de seguridad de Windows:</strong> Como el instalador no posee firma digital paga, Windows SmartScreen mostrará un mensaje indicando "Windows protegió su PC". Podés continuar con total seguridad haciendo clic en <strong>Más información</strong> y luego en <strong>Ejecutar de todas formas</strong>.
         </div>
+
+        <!-- Requisitos e instalación Cuidado Pequeñuelos -->
+        <div class="requisitos-cp">
+          <strong><i class="fas fa-list-check"></i> Requisitos e instalación</strong>
+          <ul>
+            <li><strong>Windows 10 u 11:</strong> instalador de 64 bits (125 MB).</li>
+            <li><strong>Windows 7 o equipos de 32 bits:</strong> instalador de 32 bits (79 MB).</li>
+            <li><strong>Android:</strong> aplicación APK (18 MB).</li>
+            <li><strong>Sin internet:</strong> una vez instalado no necesita conexión. El instalador se puede llevar en un pendrive.</li>
+            <li><strong>Online:</strong> cualquier navegador actualizado, con internet.</li>
+          </ul>
+          <p style="margin-top: 10px;"><i class="fas fa-file-pdf"></i> <a href="guia-docente-cuidado-pequenuelos.pdf" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700;">Guía para docentes (PDF)</a>: instalación, clave docente y una secuencia de clases.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1338,7 +1493,7 @@
     <div class="container">
       <div class="section-title" style="text-align: center; margin-bottom: 30px;">
         <h2 style="font-size: 2rem; color: var(--primary);">Desafíos Web Online</h2>
-        <p style="color: var(--secondary);">Proba el pensamiento computacional en el navegador sin instalar nada</p>
+        <p style="color: var(--secondary);">Probá el pensamiento computacional en el navegador sin instalar nada</p>
       </div>
 
       <div class="desafios-intro">
@@ -1414,6 +1569,36 @@
     </div>
   </section>
 
+  <!-- SECCIÓN: NOVEDADES -->
+  <section id="novedades" class="novedades-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 2rem; color: var(--primary);">Novedades</h2>
+        <p style="color: var(--secondary);">Qué cambió en las últimas versiones</p>
+      </div>
+
+      <div class="novedades-lista">
+        <div class="novedad cp">
+          <span class="novedad-fecha">Octubre de 2026</span>
+          <h4>Cuidado Pequeñuelos ahora también es online</h4>
+          <p>Se puede jugar desde el navegador, sin instalar nada. Sumamos una guía para docentes en PDF y un video del juego.</p>
+        </div>
+
+        <div class="novedad cp">
+          <span class="novedad-fecha">Cuidado Pequeñuelos v0.6.0</span>
+          <h4>Categoría Extras y aplicación para Android</h4>
+          <p>20 niveles nuevos con barreras láser y el bloque Esperar. Aplicación para celulares y tablets Android. El programa se adapta solo a las pantallas chicas de las netbooks.</p>
+        </div>
+
+        <div class="novedad">
+          <span class="novedad-fecha">JHF Blocks v1.12.0</span>
+          <h4>Instaladores para todas las máquinas</h4>
+          <p>Disponible para Windows 10 y 11 de 64 bits, para Windows 7 y equipos de 32 bits, y para Android.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SECCIÓN 5: QUIÉNES SOMOS -->
   <section id="quienes-somos" class="quienes-somos-section">
     <div class="container">
@@ -1456,7 +1641,7 @@
 
           <div class="team-card">
             <div class="team-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-            <h4>Cristofer Farfán</h4>
+            <h4>Christopher Farfan</h4>
             <span style="color: var(--primary); font-weight: 600; font-size: 0.88rem; display: block; margin-bottom: 8px;">Lic. en Educación & Técnico Electromecánico</span>
             <p style="font-size: 0.88rem; color: var(--secondary);">Articulación pedagógica, diseño curricular técnico y propuestas lúdico-educativas.</p>
           </div>
@@ -1532,12 +1717,6 @@
     }
 
     // Contadores
-    let visitas = localStorage.getItem('jhf_visitas') || 1045;
-    visitas = parseInt(visitas) + 1;
-    localStorage.setItem('jhf_visitas', visitas);
-    if (document.getElementById('visitsCount')) {
-      document.getElementById('visitsCount').textContent = visitas;
-    }
 
     async function obtenerDescargasReales() {
       const downloadsElem = document.getElementById('downloadsCount');
@@ -1564,6 +1743,27 @@
     }
 
     document.addEventListener('DOMContentLoaded', obtenerDescargasReales);
+
+    // Video de Cuidado Pequeñuelos: se reproduce cuando entra en pantalla y se pausa al salir
+    (function () {
+      const video = document.getElementById('videoCp');
+      if (!video || !('IntersectionObserver' in window)) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let pausadoPorUsuario = false;
+      let pausaAutomatica = false;
+      video.addEventListener('pause', () => { if (!pausaAutomatica) pausadoPorUsuario = true; pausaAutomatica = false; });
+      video.addEventListener('play', () => { pausadoPorUsuario = false; });
+      new IntersectionObserver((entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) {
+            if (!pausadoPorUsuario) video.play().catch(() => {});
+          } else if (!video.paused) {
+            pausaAutomatica = true;
+            video.pause();
+          }
+        });
+      }, { threshold: 0.6 }).observe(video);
+    })();
   </script>
 </body>
 </html>
