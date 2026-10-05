@@ -10,11 +10,15 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="EduTec JHF - Software Educativo y Robótica">
   <meta property="og:description" content="Descargá JHF Blocks y Cuidado Pequeñuelos. Soluciones gratuitas en castellano para aprender programación y robótica sin internet.">
-  <meta property="og:image" content="PANTALA_INICIO_PEQUEÑUELOS.png">
+  <meta property="og:image" content="https://edutecjhf.github.io/jhf-blocks-web/vista-previa.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="EduTec JHF: JHF Blocks y Cuidado Pequeñuelos">
   <meta property="og:url" content="https://edutecjhf.github.io/jhf-blocks-web/">
   <meta property="og:site_name" content="EduTec JHF">
   <meta property="og:locale" content="es_AR">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://edutecjhf.github.io/jhf-blocks-web/vista-previa.jpg">
   <link rel="icon" href="logo.png" type="image/png">
   
   <!-- FontAwesome & Google Fonts -->
@@ -729,6 +733,56 @@
       background-color: #e65100;
     }
 
+    /* BOTÓN JUGAR ONLINE (CUIDADO PEQUEÑUELOS EN EL NAVEGADOR) */
+    .btn-online-cp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 30px;
+      border-radius: 12px;
+      background-color: #7c4dff;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 14px rgba(124, 77, 255, 0.35);
+      transition: all 0.2s;
+    }
+
+    .btn-online-cp:hover {
+      transform: translateY(-2px);
+      background-color: #651fff;
+      box-shadow: 0 6px 20px rgba(124, 77, 255, 0.5);
+    }
+
+    .btn-online-cp small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.92;
+    }
+
+    .online-cp-box {
+      text-align: center;
+      margin: 22px 0 6px;
+    }
+
+    .online-cp-nota {
+      font-size: 0.85rem;
+      color: var(--secondary);
+      margin-top: 10px;
+    }
+
+    .btn-select.online {
+      background-color: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      margin-top: 8px;
+    }
+
+    .btn-select.online:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+    }
+
     /* SECCION DESAFIOS ONLINE */
     .desafios-section {
       padding: 60px 0;
@@ -984,6 +1038,7 @@
           <h3><i class="fas fa-robot"></i> Cuidado Pequeñuelos</h3>
           <p>Juego de lógica y pensamiento computacional en pantalla. Paso previo a la robótica.</p>
           <a href="#cuidado-pequenuelos" class="btn-select cp">Ver Cuidado Pequeñuelos</a>
+          <a href="cuidado-pequenuelos/" target="_blank" rel="noopener" class="btn-select online"><i class="fas fa-play"></i> Jugar online</a>
         </div>
       </div>
     </div>
@@ -1007,7 +1062,7 @@
           <span style="color: #94a3b8; font-size: 0.8rem; margin-left: 10px; font-weight: 500;"><i class="fas fa-laptop"></i> JHF Blocks v1.12.0 — Entorno de Programación en Notebook</span>
         </div>
         <div class="notebook-screen">
-          <img src="CAPTURA_NOTEBOOK.png" alt="JHF Blocks corriendo en Notebook escolar">
+          <img loading="lazy" decoding="async" src="CAPTURA_NOTEBOOK.png" alt="JHF Blocks corriendo en Notebook escolar">
         </div>
       </div>
       <div class="notebook-base"></div>
@@ -1057,15 +1112,15 @@
       <!-- Galería JHF -->
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="pantalla-inicio.png" alt="Pantalla Principal JHF Blocks">
+          <img loading="lazy" decoding="async" src="pantalla-inicio.png" alt="Pantalla Principal JHF Blocks">
           <div class="gallery-caption">Interfaz Principal de Bloques</div>
         </div>
         <div class="gallery-item">
-          <img src="captura-sensores.png" alt="Módulo de Sensores">
+          <img loading="lazy" decoding="async" src="captura-sensores.png" alt="Módulo de Sensores">
           <div class="gallery-caption">Lectura de Sensores</div>
         </div>
         <div class="gallery-item">
-          <img src="captura-motores.png" alt="Control de Motores">
+          <img loading="lazy" decoding="async" src="captura-motores.png" alt="Control de Motores">
           <div class="gallery-caption">Control de Motores y Salidas</div>
         </div>
       </div>
@@ -1079,6 +1134,17 @@
         <span class="brand-badge cp">Pensamiento Computacional</span>
         <h2>Cuidado <span>Pequeñuelos</span></h2>
         <p style="color: var(--secondary);">El juego de desafíos lógicos en pantalla desde 2.º ciclo de primaria hasta secundaria (10 a 14 años)</p>
+
+        <!-- JUGAR ONLINE: abre el juego en el navegador, sin instalar -->
+        <div class="online-cp-box">
+          <a href="cuidado-pequenuelos/" target="_blank" rel="noopener" class="btn-online-cp">
+            <i class="fas fa-play" style="font-size: 1.4rem;"></i>
+            <span style="text-align: left;">
+              Jugar online ahora
+              <small>En el navegador, sin instalar nada</small>
+            </span>
+          </a>
+        </div>
       </div>
 
       <div class="cp-intro-grid">
@@ -1090,7 +1156,7 @@
           <ul class="cp-features-list">
             <li><i class="fas fa-check-circle"></i> <strong>Protagonista:</strong> Ayudá al robot Kalvin a juntar baterías y engranajes.</li>
             <li><i class="fas fa-check-circle"></i> <strong>Expresivo:</strong> Kalvin reacciona con caras a lo que sucede en el mapa.</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Multiplataforma:</strong> Disponible para computadoras, netbooks, tablets y celulares (Android).</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Multiplataforma:</strong> Disponible para computadoras, netbooks, tablets y celulares (Android), y también online desde el navegador.</li>
           </ul>
         </div>
 
@@ -1101,7 +1167,7 @@
             <span><i class="fas fa-battery-full"></i> 100%</span>
           </div>
           <div class="mobile-screen-frame">
-            <img src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Cuidado Pequeñuelos corriendo en Celular y Tablet">
+            <img loading="lazy" decoding="async" src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Cuidado Pequeñuelos corriendo en Celular y Tablet">
           </div>
           <div class="mobile-screen-footer">
             <i class="fab fa-android" style="color: var(--cp-green-fluor);"></i> Cuidado Pequeñuelos v0.6.0 en Tablet / Móvil
@@ -1117,42 +1183,42 @@
 
       <div class="cp-gallery-grid">
         <div class="cp-gallery-item">
-          <img src="PANTALA_INICIO_PEQUEÑUELOS.png" alt="Pantalla de Inicio Cuidado Pequeñuelos">
+          <img loading="lazy" decoding="async" src="PANTALA_INICIO_PEQUEÑUELOS.png" alt="Pantalla de Inicio Cuidado Pequeñuelos">
           <div class="cp-gallery-caption">Pantalla Principal del Juego</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="CREAR_PERFILES.png" alt="Gestión de Perfiles de Alumnos">
+          <img loading="lazy" decoding="async" src="CREAR_PERFILES.png" alt="Gestión de Perfiles de Alumnos">
           <div class="cp-gallery-caption">Perfiles de Alumnos por Curso</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="PRINCIPIANTE_INTERMEDIO_AVANZADO.png" alt="Selección de Dificultad">
+          <img loading="lazy" decoding="async" src="PRINCIPIANTE_INTERMEDIO_AVANZADO.png" alt="Selección de Dificultad">
           <div class="cp-gallery-caption">Categorías de Dificultad</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="NIVELES_CUIDADO_PEQUEÑUELO.png" alt="Mapa de Niveles">
+          <img loading="lazy" decoding="async" src="NIVELES_CUIDADO_PEQUEÑUELO.png" alt="Mapa de Niveles">
           <div class="cp-gallery-caption">Mapa y Selección de Niveles</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Nivel Tutorial Kalvin">
+          <img loading="lazy" decoding="async" src="NIVEL_0_CUIDADO_PEQUEÑUELO.png" alt="Nivel Tutorial Kalvin">
           <div class="cp-gallery-caption">Nivel Inicial de Presentación</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="TUTORIAL_CUIDADO_PEQUEÑUELO.png" alt="Guía Tutorial Paso a Paso">
+          <img loading="lazy" decoding="async" src="TUTORIAL_CUIDADO_PEQUEÑUELO.png" alt="Guía Tutorial Paso a Paso">
           <div class="cp-gallery-caption">Tutorial Guiado en Pantalla</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="SISTEMA_BLOQUES.png" alt="Entorno de Programación por Bloques">
+          <img loading="lazy" decoding="async" src="SISTEMA_BLOQUES.png" alt="Entorno de Programación por Bloques">
           <div class="cp-gallery-caption">Sistema de Programación por Bloques</div>
         </div>
 
         <div class="cp-gallery-item">
-          <img src="MENU_CONFIGURACIONES.png" alt="Menú de Ajustes y Clave Docente">
+          <img loading="lazy" decoding="async" src="MENU_CONFIGURACIONES.png" alt="Menú de Ajustes y Clave Docente">
           <div class="cp-gallery-caption">Ajustes y Seguridad Docente</div>
         </div>
       </div>
@@ -1212,6 +1278,18 @@
       <div style="text-align: center; margin-top: 40px;">
         <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Descargar Cuidado Pequeñuelos v0.6.0</h3>
         <p style="font-size: 0.95rem; color: var(--secondary); margin-bottom: 25px;">Seleccioná la opción adecuada para las computadoras o dispositivos de tu escuela | Funcionamiento 100% Offline</p>
+
+        <!-- JUGAR ONLINE (SIN INSTALAR) -->
+        <div class="online-cp-box" style="margin-bottom: 26px;">
+          <a href="cuidado-pequenuelos/" target="_blank" rel="noopener" class="btn-online-cp">
+            <i class="fas fa-globe" style="font-size: 1.4rem;"></i>
+            <span style="text-align: left;">
+              ¿No podés instalar? Jugá online
+              <small>Funciona en cualquier navegador con internet</small>
+            </span>
+          </a>
+          <p class="online-cp-nota">En la versión online el progreso se guarda en ese navegador. Para usar sin internet, descargá el instalador.</p>
+        </div>
 
         <!-- BOTONES DE DESCARGA PEQUEÑUELOS -->
         <div class="downloads-container">
